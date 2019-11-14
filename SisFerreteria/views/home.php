@@ -20,4 +20,3 @@
         </div>
     </div>
 </section>
-<script type="text/javascript" src="./assets/js/main.js"></script>

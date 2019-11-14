@@ -30,7 +30,7 @@
         <p><span>&copy; 2019</span>, Todos Los Derechos Reservados</p>
     </div>
 </footer>
-
+<script type="text/javascript" src="./assets/js/main.js"></script>
 </body>
 
 </html>
