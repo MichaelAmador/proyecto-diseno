@@ -51,7 +51,8 @@
 
 <!--Promociones-->
 
-<section class="promociones">
+<section class="promocion">
+    <h2>Promociones</h2>
     <div class="contenedor-promocion">
         <div class="item">
             <img src="" alt="">

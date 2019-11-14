@@ -2,6 +2,17 @@
     box-sizing: border-box;
 }
 
+.boton{
+    text-decoration: none;
+    border: 1px solid gray;
+    background-color: rgb(221, 221, 221);
+    color: blue;
+    font-weight: 700;
+}
+
+.boton:hover{
+    background-color: rgb(236, 236, 236);
+}
 
 /*Slider*/
 
@@ -59,4 +70,58 @@
     to {
         opacity: 1;
     }
+}
+
+/*Categorias*/
+
+.Categoria{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top:20px;
+}
+.Categoria h2{
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: auto;
+    text-align: center;
+}
+
+.contenedor-categoria{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: auto;
+    border: 2px solid black;
+    text-align: center;
+    padding: 10px;
+}
+
+.item{
+    margin:auto;
+    width: 20%;
+    height: auto;
+    border: 1px solid black;
+}
+
+/*promociones*/
+.promocion{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+.promocion h2{
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: auto;
+    text-align: center;
+}
+
+.contenedor-promocion{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: auto;
+    border: 2px solid black;
+    text-align: center;
+    padding: 10px;
 }
