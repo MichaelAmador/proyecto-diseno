@@ -20,3 +20,60 @@
         </div>
     </div>
 </section>
+
+<!--Categorias-->
+
+<Section class="Categoria">
+    <h2>Categoria</h2>
+    <div class="contenedor-categoria">
+        <div class="item">
+            <img src="" alt="Material Electrico">
+            <p>Material Electrico</p>   
+            <a href="#" class="boton">Ver Más</a>
+        </div>
+        <div class="item">
+            <img src="" alt="Plomeria y Griferia">
+            <p>Plomeria y Griferia</p>   
+            <a href="#" class="boton">Ver Más</a>
+        </div>
+        <div class="item">
+            <img src="" alt="Iluminación">
+            <p>Iluminación</p>   
+            <a href="#" class="boton">Ver Más</a>
+        </div>
+        <div class="item">
+            <img src="" alt="Cerrajeria">
+            <p>Cerrageria</p>   
+            <a href="#" class="boton">Ver Más</a>
+        </div>
+    </div>   
+</Section>
+
+<!--Promociones-->
+
+<section class="promociones">
+    <div class="contenedor-promocion">
+        <div class="item">
+            <img src="" alt="">
+            <p></p>   
+            <a href="#" class="boton">Ver Más</a>
+        </div>
+        <div class="item">
+            <img src="" alt="">
+            <p></p>   
+            <a href="#" class="boton">Ver Más</a>
+        </div>
+        <div class="item">
+            <img src="" alt="">
+            <p></p>   
+            <a href="#" class="boton">Ver Más</a>
+        </div>
+    
+    
+    
+    
+    </div>
+
+
+
+</section>
