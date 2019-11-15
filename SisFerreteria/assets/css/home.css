@@ -8,6 +8,7 @@
     background-color: rgb(221, 221, 221);
     color: blue;
     font-weight: 700;
+
 }
 
 .boton:hover{
@@ -100,7 +101,7 @@
     margin:auto;
     width: 20%;
     height: auto;
-    border: 1px solid black;
+    box-shadow: 0 0 6px rgba(0,0,0, 0.30);
 }
 
 /*promociones*/
