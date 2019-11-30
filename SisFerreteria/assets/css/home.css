@@ -1,25 +1,39 @@
+/* apply a natural box layout model to all elements, but allowing components to change */
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
 * {
     box-sizing: border-box;
 }
 
-.boton{
+.boton {
+    margin-top: 5px;
     text-decoration: none;
     border: 1px solid gray;
     background-color: rgb(221, 221, 221);
     color: blue;
     font-weight: 700;
-
+    padding: 3px;
 }
 
-.boton:hover{
+.boton:hover {
     background-color: rgb(236, 236, 236);
 }
+
 
 /*Slider*/
 
 .slide-contenedor {
     max-width: 100%;
-    max-height:80vh;
+    max-height: 80vh;
     width: 90%;
     height: auto;
     position: relative;
@@ -73,51 +87,71 @@
     }
 }
 
+
 /*Categorias*/
 
-.Categoria{
+.Categoria {
     display: flex;
     flex-wrap: wrap;
-    margin-top:20px;
+    margin-top: 20px;
 }
-.Categoria h2{
+
+.Categoria h2 {
     margin-bottom: 20px;
     width: 100%;
     max-width: auto;
     text-align: center;
 }
 
-.contenedor-categoria{
+.contenedor-categoria {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
     max-width: auto;
     border: 2px solid black;
     text-align: center;
-    padding: 10px;
+    padding: 15px;
 }
 
-.item{
-    margin:auto;
-    width: 20%;
+.item {
+    margin: auto;
+    width: 90%;
     height: auto;
-    box-shadow: 0 0 6px rgba(0,0,0, 0.30);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.30);
+    padding: 5px;
 }
+
+.item p {
+    margin: 5px 0 5px 0;
+}
+
+@media(min-width:800px) {
+    .item {
+        margin: auto;
+        width: 20%;
+        height: auto;
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.30);
+        padding: 5px;
+    }
+}
+
 
 /*promociones*/
-.promocion{
+
+.promocion {
     display: flex;
     flex-wrap: wrap;
     margin-top: 20px;
 }
-.promocion h2{
+
+.promocion h2 {
     margin-bottom: 20px;
     width: 100%;
     max-width: auto;
     text-align: center;
 }
 
-.contenedor-promocion{
+.contenedor-promocion {
     display: flex;
     flex-wrap: wrap;
     width: 100%;

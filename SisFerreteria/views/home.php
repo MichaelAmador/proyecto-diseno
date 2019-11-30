@@ -27,26 +27,53 @@
     <h2>Categoria</h2>
     <div class="contenedor-categoria">
         <div class="item">
-            <img src="" alt="Material Electrico">
-            <p>Material Electrico</p>   
+            <div class="imagen">
+                <img src="" alt="Material Electrico">
+            </div>
+            <div class="texto">
+                <p>Material Electrico</p>
+            </div>
             <a href="#" class="boton">Ver Más</a>
         </div>
         <div class="item">
-            <img src="" alt="Plomeria y Griferia">
-            <p>Plomeria y Griferia</p>   
+            <div class="imagen">
+                <img src="" alt="Plomeria y Griferia">
+            </div>
+            <div class="texto">
+                <p>Plomeria y Griferia</p>
+            </div>
             <a href="#" class="boton">Ver Más</a>
         </div>
         <div class="item">
-            <img src="" alt="Iluminación">
-            <p>Iluminación</p>   
+            <div class="imagen">
+                <img src="" alt="Iluminación">
+            </div>
+            <div class="texto">
+                <p>Iluminación</p>
+            </div>
             <a href="#" class="boton">Ver Más</a>
         </div>
         <div class="item">
-            <img src="" alt="Cerrajeria">
-            <p>Cerrageria</p>   
+            <div class="imagen">
+                <img src="" alt="Cerrajería">
+            </div>
+            <div class="texto">
+                <p>Cerrageria</p>
+            </div>
+
             <a href="#" class="boton">Ver Más</a>
         </div>
-    </div>   
+        <div class="item">
+            <div class="imagen">
+                <img src="" alt="Materiales de Construcción">
+            </div>
+            <div class="texto">
+                <p>Materiales de Construcción</p>
+            </div>
+
+            <a href="#" class="boton">Ver Más</a>
+        </div>
+    </div>
 </Section>
 
 <!--Promociones-->
@@ -56,23 +83,23 @@
     <div class="contenedor-promocion">
         <div class="item">
             <img src="" alt="">
-            <p></p>   
+            <p></p>
             <a href="#" class="boton">Ver Más</a>
         </div>
         <div class="item">
             <img src="" alt="">
-            <p></p>   
+            <p></p>
             <a href="#" class="boton">Ver Más</a>
         </div>
         <div class="item">
             <img src="" alt="">
-            <p></p>   
+            <p></p>
             <a href="#" class="boton">Ver Más</a>
         </div>
-    
-    
-    
-    
+
+
+
+
     </div>
 
 
