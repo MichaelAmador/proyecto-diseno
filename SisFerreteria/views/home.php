@@ -1,4 +1,4 @@
-<!--<section>
+<section>
     <div class="slide-contenedor">
         <div class="miSlider fade">
             <img src="./assets/img/boshcierra.jpg" alt="">
@@ -20,7 +20,7 @@
         </div>
     </div>
 </section>
--->
+
 <!--Categorias-->
 
 <Section class="Categoria">
