@@ -27,7 +27,6 @@ html {
 }
 
 header {
-    margin-top: 5px;
     background-color: rgb(255, 255, 255);
     margin-bottom: 40px;
     box-shadow: 0 1pt 6pt #2B2B2B;
@@ -48,8 +47,7 @@ header {
 /*Vista movil*/
 
 .Logo {
-    margin: 0 20px 0 20px;
-    min-width: 35%;
+    margin: auto auto auto 50px;
 }
 
 .Logo a {
@@ -69,16 +67,25 @@ header {
     .mostrarmenu {
         width: 10%;
     }
+    .Logo {
+        width: 70%;
+    }
 }
 
 @media only screen and (min-width:315px) and (max-width:414px) {
     .mostrarmenu {
         width: 20%;
     }
+    .Logo {
+        width: 50%;
+    }
 }
 
 @media only screen and (min-width:415px) and (max-width:700px) {
     .mostrarmenu {
+        width: 30%;
+    }
+    .Logo {
         width: 40%;
     }
 }
@@ -86,6 +93,9 @@ header {
 @media only screen and (min-width:701px) and (max-width:800px) {
     .mostrarmenu {
         width: 50%;
+    }
+    .Logo {
+        width: 30%;
     }
 }
 
@@ -163,31 +173,37 @@ header {
 /*vista pc*/
 
 @media only screen and (min-width:801px) {
+    .Logo {
+        margin: auto 0 auto 50px;
+    }
     .mostrarmenu {
         display: none;
     }
     .menu-items {
         display: flex;
+        margin: auto 10px auto auto;
         flex-wrap: wrap;
-        width: 100%;
+        width: 60%;
+        flex-direction: row;
         list-style: none;
         background-color: rgb(255, 255, 255);
-        font-size: 1.1rem;
+        font-size: 1.3rem;
+        font-weight: bold;
     }
     .menu-items li {
         align-self: right;
         width: fit-content;
+        margin: auto;
     }
     .menu-items li a {
         text-decoration: none;
-        color: #707070;
+        color: #4b4a4a;
     }
     .menu-items li a i {
         margin-left: 5px;
         color: #1D77FF;
     }
     .menu-items li [type="text"] {
-        margin-top: 5px;
         -webkit-border-radius: 25px;
         -moz-border-radius: 25px;
         border-radius: 25px;
@@ -195,6 +211,7 @@ header {
         margin-right: 10px;
         padding: 5px;
         border: 1px solid gray;
+        font-size: 1.2rem;
     }
     button {
         margin-left: 5px;
@@ -205,19 +222,21 @@ header {
     /*droopdown*/
     .menu-items ul {
         display: none;
+        position: relative;
     }
     .menu-items ul li {
-        margin-left: 20px;
+        margin-left: 5px;
         list-style: none;
-        background-color: #d5d5d5;
+        background-color: #FFFFFF;
         width: max-content;
+        border-top: 1px solid black;
     }
     .menu-items li a:hover {
-        background-color: #d2d2d2;
         color: rgb(255, 87, 11);
     }
     .menu-items li:hover>ul {
         display: flex;
+        position: absolute;
     }
     .menu-items li ul li a:hover {
         color: rgb(252, 87, 11);

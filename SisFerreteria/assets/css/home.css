@@ -123,6 +123,11 @@ html {
     overflow: hidden;
 }
 
+.item .imagen img {
+    width: auto;
+    height: auto;
+}
+
 .item p {
     margin: 5px 0 5px 0;
 }

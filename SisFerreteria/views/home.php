@@ -28,7 +28,7 @@
     <div class="contenedor-categoria">
         <div class="item">
             <div class="imagen">
-                <img src="" alt="Material Electrico">
+                <img src="./assets/img/electrica.jpg.png" alt="Material Electrico">
             </div>
             <div class="texto">
                 <p>Material Electrico</p>
@@ -37,16 +37,16 @@
         </div>
         <div class="item">
             <div class="imagen">
-                <img src="" alt="Plomeria">
+                <img src="./assets/img/griferia.png" alt="Plomeria">
             </div>
             <div class="texto">
-                <p>Plomeria</p>
+                <p>Plomeria y Griferia</p>
             </div>
             <a href="#" class="boton">Ver Más</a>
         </div>
         <div class="item">
             <div class="imagen">
-                <img src="" alt="Iluminación">
+                <img src="./assets/img/iluminacion.png" alt="Iluminación">
             </div>
             <div class="texto">
                 <p>Iluminación</p>
@@ -55,14 +55,14 @@
         </div>
         <div class="item">
             <div class="imagen">
-                <img src="" alt="Cerrajería">
+                <img src="./assets/img/cerrajeria.png" alt="Cerrajería">
             </div>
             <div class="texto">
                 <p>Cerrageria</p>
             </div>
-
             <a href="#" class="boton">Ver Más</a>
         </div>
+        <!--
         <div class="item">
             <div class="imagen">
                 <img src="" alt="Materiales">
@@ -70,9 +70,9 @@
             <div class="texto">
                 <p>Construccioncines</p>
             </div>
-
             <a href="#" class="boton">Ver Más</a>
         </div>
+-->
     </div>
 </Section>
 
