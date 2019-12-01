@@ -25,17 +25,12 @@
 		*/
 		public static function startup(){
 
-			$pdo = new PDO('mysql:host=localhost:3307;dbname=si_todohogar;charset=utf8', 'root', '');
+			$pdo = new PDO('mysql:host=localhost:3307;dbname=ferreteria_castillo;charset=utf8', 'root', '');
 			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			return $pdo;
 
 		}
 	
 	}
-  
-
-	
-
-
 
 ?>
