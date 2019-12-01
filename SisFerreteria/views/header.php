@@ -21,14 +21,16 @@
             <div class="Logo">
                 <a href="#"><span>Ferreteria Castillo</span></a>
             </div>
-            <div class="mostrarmenu">
+            <div class="mostrarmenu" onclick="MostrarMenu()">
                 <span>
                     Menú
                 </span>
             </div>
-            <ul class="menu-items">
-                <li><input type="text" placeholder="Encuentra tu producto"><button><i
-                            class="fas fa-search"></i></button></li>
+            <ul class="menu-items" id="MenuItem">
+                <li>
+                    <form action="index.php" method="post"><input type="text" placeholder="Encuentra tu producto"><button><i
+                            class="fas fa-search"></i></button></form>
+                </li>
                 <li><a href="#">Catalogo</a>
                     <ul>
                         <li><a href="">Ejemplo</a> </li>

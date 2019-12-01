@@ -37,10 +37,10 @@
         </div>
         <div class="item">
             <div class="imagen">
-                <img src="" alt="Plomeria y Griferia">
+                <img src="" alt="Plomeria">
             </div>
             <div class="texto">
-                <p>Plomeria y Griferia</p>
+                <p>Plomeria</p>
             </div>
             <a href="#" class="boton">Ver Más</a>
         </div>
@@ -65,10 +65,10 @@
         </div>
         <div class="item">
             <div class="imagen">
-                <img src="" alt="Materiales de Construcción">
+                <img src="" alt="Materiales">
             </div>
             <div class="texto">
-                <p>Materiales de Construcción</p>
+                <p>Construccioncines</p>
             </div>
 
             <a href="#" class="boton">Ver Más</a>

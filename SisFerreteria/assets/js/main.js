@@ -33,10 +33,11 @@ function muestraSlides(n) {
 }
 
 function MostrarMenu() {
-    var x = document.getElementById("Menuid");
-    if (x.className === "mimenu") {
-        x.className += " responsive";
+    var x = document.getElementById("MenuItem");
+    if (x.className === "menu-items") {
+        x.className += "mostrar";
     } else {
-        x.className = "mimenu"
+        x.className = "menu-items";
+
     }
 }
