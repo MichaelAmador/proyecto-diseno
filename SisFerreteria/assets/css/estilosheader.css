@@ -12,7 +12,7 @@
 
 header {
     background-color: rgb(255, 255, 255);
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     box-shadow: 0 1pt 6pt #2B2B2B;
     position: relative;
     z-index: 800;
@@ -22,7 +22,8 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 40px;
+    width: 100%;
+    height: auto;
 }
 
 .container-nav a {
@@ -33,6 +34,8 @@ header {
 .container-nav .logo {
     margin-left: 40px;
     font-size: 18pt;
+    height: auto;
+    width: 25%;
 }
 
 .container-nav .logo a {
@@ -40,7 +43,13 @@ header {
     color: #E86020;
 }
 
-.container-nav>ul {
+.container-nav>.menu>.mostrarmenu {
+    display: flex;
+    font-size: 20pt;
+    font-weight: 900;
+}
+
+.container-nav>.menu>ul {
     display: flex;
     flex-direction: row;
     list-style: none;
@@ -48,14 +57,14 @@ header {
     height: 40px;
 }
 
-.container-nav>ul>li {
+.container-nav>.menu>ul>li {
     display: flex;
     margin: 0 15px;
     align-items: center;
     height: 40px;
 }
 
-.container-nav>ul>li>input[type="text"] {
+.container-nav>.menu>ul>li>input[type="text"] {
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px;
     border-radius: 25px;
@@ -65,7 +74,7 @@ header {
     border: 1px solid gray;
 }
 
-.container-nav>ul>li>a {
+.container-nav>.menu>ul>li>a {
     text-decoration: none;
 }
 
@@ -73,10 +82,28 @@ header {
     text-decoration: underline;
 }
 
+.container-nav>.menu>.mostrarmenu {
+    display: none;
+}
+
+@media(max-width:800) {
+    .container-nav>.menu>.mostrarmenu {
+        display: flex;
+    }
+    .mimenu>.responsive {
+        position: relative;
+    }
+    .container-nav>.menu>.mostrarmenu>.responsive {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+}
+
 
 /*Dropdown*/
 
-.container-nav ul li ul {
+.container-nav .menu ul li ul {
     display: none;
     background-color: white;
     top: 40px;
@@ -89,17 +116,17 @@ header {
     padding: 5px 10px;
 }
 
-.container-nav>ul>li>ul>a {
+.container-nav>.menu>ul>li>ul>a {
     font-size: 11pt;
     color: #2B2B2B;
     margin: 5px;
 }
 
-.container-nav>ul>li>ul>a:hover {
+.container-nav>.menu>ul>li>ul>a:hover {
     text-decoration-color: #FE505A;
 }
 
-.container-nav ul li:hover ul {
+.container-nav .menu ul li:hover ul {
     display: flex;
     flex-direction: column;
     align-items: flex-start;

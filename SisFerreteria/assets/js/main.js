@@ -3,6 +3,7 @@ muestraSlides(indice);
 
 function posicionSlide(n) {
     muestraSlides(indice = n);
+    clearInterval(indice);
 }
 setInterval(function tiempo() {
     muestraSlides(indice += 1)
@@ -29,4 +30,13 @@ function muestraSlides(n) {
     slides[indice - 1].style.display = 'block';
     barras[indice - 1].className += ' active';
 
+}
+
+function MostrarMenu() {
+    var x = document.getElementById("Menuid");
+    if (x.className === "mimenu") {
+        x.className += " responsive";
+    } else {
+        x.className = "mimenu"
+    }
 }
