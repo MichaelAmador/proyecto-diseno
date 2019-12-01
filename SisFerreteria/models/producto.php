@@ -1,16 +1,13 @@
 <?php
 	include dirname(__FILE__,2)."/Config/conexion.php";
 
-	class Cita{
+	class Producto{
 	
 		private $pdo;
-        public $idsolicitud;
+        public $idproducto;
         public $nombre;
-        public $cedula;
-        public $numerocontrato;
-        public $motivo;
-        public $fecha;
-        public $hora;
+        public $marca;
+        public $precio;       
         
 		public function __CONSTRUCT()
 	    {
@@ -28,7 +25,8 @@
 		public function listar(){
             try{
                 $result = array();
-                $stm = $this->pdo->prepare("select cita.idcitas, solicitud.Idsolicitud, solicitud.Solicitante, cliente.nombre, solicitud.motivo, solicitud.numerocontrato, electrodomestico.nombre_electrodomestico, cita.fecha, cita.hora from solicitud, cita, electrodomestico, cliente WHERE solicitud.Solicitante=cliente.idcliente and solicitud.numerocontrato=electrodomestico.numero_contrato and solicitud.Idsolicitud = cita.Id_solicitud;");
+                $stm = $this->pdo->prepare("select idproducto, p.nombre,m.nombre,precio from producto p inner join marca m 
+                on m.idmarca = p.marca ;");
                 $stm->execute();
 
                 return $stm->fetchAll(PDO::FETCH_OBJ);
@@ -71,18 +69,17 @@
 		}
         
 
-        public function Guardar(Cita $data)
+        public function Guardar(Producto $data)
         {
             try 
             {
             $out='';
             $result = array();
-            $sql = "CALL nuevasolicitud( ? , ? , ?, ?)";
+            $sql = "CALL nuevaProducto( ? , ? , ?)";
             $stm = $this->pdo->prepare($sql);
             $stm->bindParam(1,$data->nombre,PDO::PARAM_STR);
-            $stm->bindParam(2,$data->cedula,PDO::PARAM_STR);
-            $stm->bindParam(3,$data->numerocontrato,PDO::PARAM_STR);
-            $stm->bindParam(4,$data->motivo,PDO::PARAM_STR);
+            $stm->bindParam(2,$data->marca,PDO::PARAM_STR);
+            $stm->bindParam(3,$data->precio,PDO::PARAM_STR);           
             $stm->execute();
              
             $out=$stm->fetchAll(PDO::FETCH_OBJ);
@@ -93,7 +90,29 @@
             }
         }
 
-        public function GuardarC(Cita $data){
+        public function Modificar(Producto $data)
+        {
+            try 
+            {
+            $out='';
+            $result = array();
+            $sql = "CALL modificarProducto(?, ? , ? , ?)";
+            $stm = $this->pdo->prepare($sql);
+            $stm->bindParam(1,$data->idproducto,PDO::PARAM_INT);
+            $stm->bindParam(2,$data->nombre,PDO::PARAM_STR);
+            $stm->bindParam(3,$data->marca,PDO::PARAM_STR);
+            $stm->bindParam(4,$data->precio,PDO::PARAM_STR);           
+            $stm->execute();
+             
+            $out=$stm->fetchAll(PDO::FETCH_OBJ);
+            return $out;
+            } catch (Exception $e) 
+            {
+                die($e->getMessage());
+            }
+        }
+
+        public function GuardarC(Producto $data){
 
             try
             {
