@@ -11,7 +11,7 @@
  Target Server Version : 100316
  File Encoding         : 65001
 
- Date: 01/12/2019 22:00:11
+ Date: 02/12/2019 10:21:34
 */
 
 SET NAMES utf8mb4;
@@ -202,6 +202,31 @@ CREATE TABLE `venta`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Procedure structure for modificarMarca
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `modificarMarca`;
+delimiter ;;
+CREATE PROCEDURE `modificarMarca`(IN pIdMarca INT,
+IN pNombre VARCHAR(20))
+BEGIN
+	#Routine body goes here...
+	
+DECLARE x INT;
+DECLARE y VARCHAR(10);
+
+
+UPDATE marca SET
+nombre = pNombre
+WHERE
+idmarca = pIdMarca;
+
+SELECT y AS resultado;
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
 -- Procedure structure for modificarProducto
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `modificarProducto`;
@@ -264,6 +289,36 @@ idProveedor = pIdProveedor;
 select y as resultado;
 
 
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for nuevaMarca
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `nuevaMarca`;
+delimiter ;;
+CREATE PROCEDURE `nuevaMarca`(IN pNombre VARCHAR(20))
+BEGIN
+	#Routine body goes here...
+	
+	declare x int;
+declare y varchar(10);
+
+select count(*) into x from producto where nombre = pNombre and marca = pMarca and categoria = pCategoria;
+
+if(x >0) THEN
+
+	set y = 0;
+	select y as resultado;
+ELSE
+insert into marca(nombre) values (pNombre);
+    set y = 1;
+    select y as resultado;
+
+END IF;
+	
 
 END
 ;;

@@ -28,24 +28,7 @@
             header('Location: ../Views/core/producto.php?error=true');
         }
     }
-
-    function GuardarS(){
-        $solicitud = new Cita();
-        $solicituds = $solicitud;
-        $comparar="";
-        $solicitud->cedula = $_REQUEST['idsolicitante'];
-        $solicitud->nombre = $_REQUEST['solicitante'];
-        $solicitud->numerocontrato = $_REQUEST['numcontrato'];
-        $solicitud->motivo = $_REQUEST['motivocita'];
-        $solicituds=$solicitud->Guardar($solicitud);
-        $comparar=json_decode(json_encode($solicituds),true);
-        if($comparar['0']['salida']=='1'){
-           header('Location: ../Views/core/producto.php?success=true');
-        }else{
-           header('Location: ../Views/core/producto.php?error=true');
-        }
-       }
-
+   
     function Guardar(){
         $producto=new Producto();
         $comparar="";

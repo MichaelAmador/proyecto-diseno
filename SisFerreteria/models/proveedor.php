@@ -81,7 +81,23 @@
             {
                 die($e->getMessage());
             }
-        }        
+        }
+        
+        public function Buscar($buscador)
+		{
+			try 
+			{
+				$stm = $this->pdo
+					->prepare("selec * from proveedor where nombre like ?");
+						  
+                $param = ["%$buscador%"];
+				$stm->execute($param);
+				return $stm->fetchAll(PDO::FETCH_OBJ);
+			} catch (Exception $e) 
+			{
+				die($e->getMessage());
+			}
+		}
 	
 	}
 ?>

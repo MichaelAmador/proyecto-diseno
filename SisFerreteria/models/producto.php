@@ -27,9 +27,7 @@
 	
 		public function listar(){
             try{
-                $result = array();
-                $stm = $this->pdo->prepare("select idproducto, p.nombre,m.nombre as marca, precio, imagen from producto p inner join marca m 
-                on m.idmarca = p.marca ;");
+                $result = array();              
                 $stm = $this->pdo->prepare("select idproducto, p.nombre Producto,c.nombre Categoria,m.nombre Marca,precio,imagen
                 from producto p inner join marca m on m.idmarca = p.marca inner join categoria c on c.idcategoria = p.categoria;");
                 $stm->execute();
@@ -62,8 +60,9 @@
 			try 
 			{
 				$stm = $this->pdo
-						  ->prepare("select idproducto, p.nombre,m.nombre as marca,precio, imagen from producto p inner join marca m 
-                          on m.idmarca = p.marca where p.nombre like ?");
+					->prepare("select idproducto, p.nombre Producto,c.nombre Categoria,m.nombre Marca,precio,imagen
+                    from producto p inner join marca m on m.idmarca = p.marca inner join categoria c on c.idcategoria = p.categoria 
+                    where p.nombre like ?");
 						  
                 $param = ["%$buscador%"];
 				$stm->execute($param);
