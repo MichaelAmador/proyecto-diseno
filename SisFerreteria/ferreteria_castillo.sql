@@ -11,7 +11,7 @@
  Target Server Version : 100316
  File Encoding         : 65001
 
- Date: 02/12/2019 10:48:51
+ Date: 02/12/2019 11:25:57
 */
 
 SET NAMES utf8mb4;
@@ -327,6 +327,38 @@ END
 delimiter ;
 
 -- ----------------------------
+-- Procedure structure for modificarUsuario
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `modificarUsuario`;
+delimiter ;;
+CREATE PROCEDURE `modificarUsuario`(IN pIdUsuario INT,
+IN pNombre VARCHAR(20),
+IN pApellido VARCHAR(20),
+IN pLogin VARCHAR(20),
+IN pClave VARCHAR(100),
+IN pTipoUser INT)
+BEGIN
+	#Routine body goes here...
+	
+declare x int;
+declare y varchar(10);
+
+UPDATE usuario SET
+nombre = pNombre,
+apellido = pApellido,
+login = pLogin,
+clave = pClave,
+tipo_usuario = pTipoUser
+WHERE
+idUsuario = pIdUsuario;
+
+select y as resultado;
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
 -- Procedure structure for nuevaMarca
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `nuevaMarca`;
@@ -408,6 +440,37 @@ if(x >0) then
 	select y as resultado;
 else
 	insert into proveedor(nombre,Direccion,telefono,web) values (pNombre,pDireccion,pTelefono,pWeb);
+    set y =1;
+    select y as resultado;
+end if;
+
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for nuevoUsuario
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `nuevoUsuario`;
+delimiter ;;
+CREATE PROCEDURE `nuevoUsuario`(IN pNombre VARCHAR(20),
+IN pApellido VARCHAR(20),
+IN pLogin VARCHAR(20),
+IN pClave VARCHAR(100),
+IN pTipoUser INT)
+BEGIN
+	#Routine body goes here...
+declare x int;
+declare y varchar(10);
+
+select count(*) into x from usuario where nombre = pNombre and apellido = pApellido and login = pLogin;
+
+if(x >0) then
+	set y = 0;
+	select y as resultado;
+else
+	insert into usuario(nombre,apellido,login,clave,tipo_usuario) values (pNombre,pApellido,pLogin,pClave,pTipoUser);
     set y =1;
     select y as resultado;
 end if;
