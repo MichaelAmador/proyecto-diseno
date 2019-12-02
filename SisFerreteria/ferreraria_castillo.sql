@@ -11,11 +11,21 @@
  Target Server Version : 100316
  File Encoding         : 65001
 
- Date: 01/12/2019 16:44:56
+ Date: 01/12/2019 20:56:29
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for categoria
+-- ----------------------------
+DROP TABLE IF EXISTS `categoria`;
+CREATE TABLE `categoria`  (
+  `idcategoria` int(255) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(20) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  PRIMARY KEY (`idcategoria`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for compra
@@ -126,10 +136,14 @@ CREATE TABLE `producto`  (
   `nombre` varchar(30) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   `marca` int(30) NULL DEFAULT NULL,
   `precio` double(255, 0) NULL DEFAULT NULL,
+  `imagen` mediumblob NULL,
+  `categoria` int(255) NULL DEFAULT NULL,
   PRIMARY KEY (`idProducto`) USING BTREE,
   INDEX `idProducto`(`idProducto`) USING BTREE,
   INDEX `fk01_producto`(`marca`) USING BTREE,
-  CONSTRAINT `fk01_producto` FOREIGN KEY (`marca`) REFERENCES `marca` (`idmarca`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  INDEX `fk02_producto`(`categoria`) USING BTREE,
+  CONSTRAINT `fk01_producto` FOREIGN KEY (`marca`) REFERENCES `marca` (`idmarca`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk02_producto` FOREIGN KEY (`categoria`) REFERENCES `categoria` (`idcategoria`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -195,7 +209,9 @@ delimiter ;;
 CREATE PROCEDURE `modificarProducto`(IN `pIdProducto` int,
 IN `pNombre` varchar(50),
 IN `pMarca` int,
-IN `pPrecio` double)
+IN `pPrecio` double,
+in pImagen MEDIUMBLOB,
+in pCategoria INT)
 BEGIN
 	#Routine body goes here...
 	
@@ -206,7 +222,9 @@ declare y varchar(10);
 UPDATE producto SET
 nombre = pNombre,
 marca = pMarca,
-precio = pPrecio
+precio = pPrecio,
+imagen = pImagen,
+categoria = pCategoria
 WHERE
 idProducto = pIdProducto;
 
@@ -225,19 +243,21 @@ DROP PROCEDURE IF EXISTS `nuevoProducto`;
 delimiter ;;
 CREATE PROCEDURE `nuevoProducto`(in pNombre varchar(30),
 in pMarca int,
-in pPrecio double)
+in pPrecio double,
+in pImagen MEDIUMBLOB,
+in pCategoria INT)
 BEGIN
 
 declare x int;
 declare y varchar(10);
 
-select count(*) into x from producto where nombre = pNombre and marca = pMarca;
+select count(*) into x from producto where nombre = pNombre and marca = pMarca and categoria = pCategoria;
 
 if(x >0) then
 	set y = 0;
 	select y as resultado;
 else
-	insert into producto(nombre,marca,precio) values (pNombre,pMarca,pPrecio);
+	insert into producto(nombre,marca,precio,imagen,categoria) values (pNombre,pMarca,pPrecio,pImagen,pCategoria);
     set y =1;
     select y as resultado;
 end if;

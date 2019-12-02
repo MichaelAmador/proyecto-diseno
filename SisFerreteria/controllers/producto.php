@@ -51,7 +51,9 @@
         $comparar="";
         $producto->nombre =$_REQUEST['nombre'];
         $producto->marca =$_REQUEST['marca'];
-        $producto->precio =$_REQUEST['precio'];        
+        $producto->precio =$_REQUEST['precio']; 
+        $producto->imagen =$_REQUEST['imagen']; 
+        $producto->categoria =$_REQUEST['categoria'];        
         $productos=$producto->Guardar($producto);
         $comparar=json_decode(json_encode($producto),true);
         if($comparar['0']['resultado']=='1'){
@@ -68,7 +70,9 @@
         $producto->idproducto =$_REQUEST['idproducto'];
         $producto->nombre =$_REQUEST['nombre'];
         $producto->marca =$_REQUEST['marca'];
-        $producto->precio =$_REQUEST['precio'];        
+        $producto->precio =$_REQUEST['precio']; 
+        $producto->imagen =$_REQUEST['imagen']; 
+        $producto->categoria =$_REQUEST['categoria'];         
         $productos=$producto->Modificar($producto);
         $comparar=json_decode(json_encode($producto),true);
         if($comparar['0']['resultado']=='1'){
