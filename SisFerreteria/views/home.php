@@ -33,7 +33,7 @@
             <div class="texto">
                 <p>Material Electrico</p>
             </div>
-            <a href="?c=productos&categoria=material_electrico" class="boton">Ver Más</a>
+            <a href="?c=productos&buscar=material_electrico" class="boton">Ver Más</a>
         </div>
         <div class="item">
             <div class="imagen">
@@ -42,7 +42,7 @@
             <div class="texto">
                 <p>Plomeria y Griferia</p>
             </div>
-            <a href="#" class="boton">Ver Más</a>
+            <a href="?c=productos&buscar=plomeria" class="boton">Ver Más</a>
         </div>
         <div class="item">
             <div class="imagen">

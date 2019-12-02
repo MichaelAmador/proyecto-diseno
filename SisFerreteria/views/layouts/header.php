@@ -11,8 +11,8 @@
             </div>
             <ul class="menu-items" id="MenuItem">
                 <li>
-                    <form action="index.php" method="post"><input type="text"
-                            placeholder="Encuentra tu producto"><button><i class="fas fa-search"></i></button></form>
+                    <form action="?c=productos" method="post">
+                        <input type="text" name="buscar" id="buscar" placeholder="Encuentra tu producto"><button><i class="fas fa-search"></i></button></form>
                 </li>
                 <li><a href="#">Catalogo</a>
                     <ul>

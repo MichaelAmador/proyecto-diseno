@@ -1,5 +1,5 @@
 <?php
-	include dirname(__FILE__,2)."/Config/conexion.php";
+	include dirname(__FILE__,2)."./Config/conexion.php";
 
 	class Producto{
 	
@@ -7,7 +7,9 @@
         public $idproducto;
         public $nombre;
         public $marca;
-        public $precio;       
+        public $precio;  
+        public $imagen; 
+        public $buscador;    
         
 		public function __CONSTRUCT()
 	    {
@@ -25,7 +27,7 @@
 		public function listar(){
             try{
                 $result = array();
-                $stm = $this->pdo->prepare("select idproducto, p.nombre,m.nombre,precio from producto p inner join marca m 
+                $stm = $this->pdo->prepare("select idproducto, p.nombre,m.nombre as marca, precio, imagen from producto p inner join marca m 
                 on m.idmarca = p.marca ;");
                 $stm->execute();
 
@@ -52,16 +54,17 @@
             }
         }
 		
-		public function Obtener($idsolicitud)
+		public function Buscar($buscador)
 		{
 			try 
 			{
 				$stm = $this->pdo
-						  ->prepare("select Idsolicitud, cliente.nombre, Solicitante, numerocontrato,motivo from solicitud, cliente WHERE solicitud.Solicitante=cliente.idcliente and Idsolicitud = ?");
+						  ->prepare("select idproducto, p.nombre,m.nombre as marca,precio, imagen from producto p inner join marca m 
+                          on m.idmarca = p.marca where p.nombre like ?");
 						  
-	
-				$stm->execute(array($idsolicitud));
-				return $stm->fetch(PDO::FETCH_OBJ);
+                $param = ["%$buscador%"];
+				$stm->execute($param);
+				return $stm->fetchAll(PDO::FETCH_OBJ);
 			} catch (Exception $e) 
 			{
 				die($e->getMessage());
