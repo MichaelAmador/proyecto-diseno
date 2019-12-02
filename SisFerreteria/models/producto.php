@@ -7,9 +7,10 @@
         public $idproducto;
         public $nombre;
         public $marca;
-        public $precio;  
-        public $imagen; 
-        public $buscador;    
+        public $precio; 
+        public $imagen;
+        public $categoria;     
+        public $buscador; 
         
 		public function __CONSTRUCT()
 	    {
@@ -29,6 +30,8 @@
                 $result = array();
                 $stm = $this->pdo->prepare("select idproducto, p.nombre,m.nombre as marca, precio, imagen from producto p inner join marca m 
                 on m.idmarca = p.marca ;");
+                $stm = $this->pdo->prepare("select idproducto, p.nombre Producto,c.nombre Categoria,m.nombre Marca,precio,imagen
+                from producto p inner join marca m on m.idmarca = p.marca inner join categoria c on c.idcategoria = p.categoria;");
                 $stm->execute();
 
                 return $stm->fetchAll(PDO::FETCH_OBJ);
@@ -78,11 +81,13 @@
             {
             $out='';
             $result = array();
-            $sql = "CALL nuevaProducto( ? , ? , ?)";
+            $sql = "CALL nuevoProducto(?, ?, ? , ? , ?)";
             $stm = $this->pdo->prepare($sql);
             $stm->bindParam(1,$data->nombre,PDO::PARAM_STR);
             $stm->bindParam(2,$data->marca,PDO::PARAM_STR);
-            $stm->bindParam(3,$data->precio,PDO::PARAM_STR);           
+            $stm->bindParam(3,$data->precio,PDO::PARAM_STR); 
+            $stm->bindParam(4,$data->imagen,PDO::PARAM_STR); //Cambiar tipo de dato especifico para imagen
+            $stm->bindParam(5,$data->categoria,PDO::PARAM_INT);           
             $stm->execute();
              
             $out=$stm->fetchAll(PDO::FETCH_OBJ);
@@ -99,12 +104,14 @@
             {
             $out='';
             $result = array();
-            $sql = "CALL modificarProducto(, ? , ? , ?)";
+            $sql = "CALL modificarProducto(?, ?, ?, ? , ? , ?)";
             $stm = $this->pdo->prepare($sql);
             $stm->bindParam(1,$data->idproducto,PDO::PARAM_INT);
             $stm->bindParam(2,$data->nombre,PDO::PARAM_STR);
             $stm->bindParam(3,$data->marca,PDO::PARAM_STR);
-            $stm->bindParam(4,$data->precio,PDO::PARAM_STR);           
+            $stm->bindParam(4,$data->precio,PDO::PARAM_STR); 
+            $stm->bindParam(5,$data->imagen,PDO::PARAM_STR); //Cambiar tipo de dato especifico para imagen
+            $stm->bindParam(6,$data->categoria,PDO::PARAM_INT);           
             $stm->execute();
              
             $out=$stm->fetchAll(PDO::FETCH_OBJ);
