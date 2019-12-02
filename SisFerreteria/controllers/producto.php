@@ -46,7 +46,7 @@
         }
        }
 
-       function Guardar(){
+    function Guardar(){
         $producto=new Producto();
         $comparar="";
         $producto->nombre =$_REQUEST['nombre'];
@@ -60,9 +60,9 @@
             header('Location: ../Views/core/producto.php?error=true');
         }
 
-       }
+    }
 
-       function Modificar(){
+    function Modificar(){
         $producto=new Producto();
         $comparar="";
         $producto->idproducto =$_REQUEST['idproducto'];
@@ -77,6 +77,6 @@
             header('Location: ../Views/core/producto.php?error=true');
         }
 
-       }
+    }
 
 ?>
