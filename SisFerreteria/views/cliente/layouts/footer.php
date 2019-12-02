@@ -23,6 +23,8 @@
                 <li><span>Politicas de Privacidad</span></li>
 
                 <li><span>Terminos y Condiciones</span></li>
+
+                <li><a href="?c=login&a=Index2">SIST</a></li>
             </ul>
         </div>
     </div>

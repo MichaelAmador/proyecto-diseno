@@ -6,7 +6,9 @@
         }
        
 
-
+        public function Index2(){
+            include_once "Views/admin/loginadmin.php";
+        }
 
     }
    
