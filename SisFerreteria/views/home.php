@@ -33,7 +33,7 @@
             <div class="texto">
                 <p>Material Electrico</p>
             </div>
-            <a href="#" class="boton">Ver Más</a>
+            <a href="?c=productos&categoria=material_electrico" class="boton">Ver Más</a>
         </div>
         <div class="item">
             <div class="imagen">
@@ -97,7 +97,4 @@
             <a href="#" class="boton">Ver Más</a>
         </div>
     </div>
-
-
-
 </section>
