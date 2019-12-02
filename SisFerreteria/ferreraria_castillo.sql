@@ -11,7 +11,7 @@
  Target Server Version : 100316
  File Encoding         : 65001
 
- Date: 01/12/2019 20:56:29
+ Date: 01/12/2019 22:00:11
 */
 
 SET NAMES utf8mb4;
@@ -237,6 +237,39 @@ END
 delimiter ;
 
 -- ----------------------------
+-- Procedure structure for modificarProveedor
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `modificarProveedor`;
+delimiter ;;
+CREATE PROCEDURE `modificarProveedor`(IN pIdProveedor INT,
+IN pNombre VARCHAR(20),
+IN pDireccion VARCHAR(100),
+IN pTelefono VARCHAR(16),
+IN pWeb varchar(20))
+BEGIN
+	#Routine body goes here...
+
+declare x int;
+declare y varchar(10);
+
+
+UPDATE proveedor SET
+nombre = pNombre,
+direccion = pDireccion,
+telefono = pTelefono,
+web = pWeb
+WHERE
+idProveedor = pIdProveedor;
+
+select y as resultado;
+
+
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
 -- Procedure structure for nuevoProducto
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `nuevoProducto`;
@@ -261,6 +294,37 @@ else
     set y =1;
     select y as resultado;
 end if;
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for nuevoProveedor
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `nuevoProveedor`;
+delimiter ;;
+CREATE PROCEDURE `nuevoProveedor`(IN `pNombre` VARCHAR(50),
+IN pDireccion VARCHAR(100),
+IN pTelefono VARCHAR(16),
+IN pWeb VARCHAR(20))
+BEGIN
+	#Routine body goes here...
+	
+	declare x int;
+	declare y varchar(10);
+
+select count(*) into x from proveedor where nombre = pNombre and Direccion = pDireccion;
+
+if(x >0) then
+	set y = 0;
+	select y as resultado;
+else
+	insert into proveedor(nombre,Direccion,telefono,web) values (pNombre,pDireccion,pTelefono,pWeb);
+    set y =1;
+    select y as resultado;
+end if;
+
 
 END
 ;;
