@@ -6,7 +6,7 @@
         if(isset($_REQUEST)){
             Guardar();
         }else{
-            header('Location: ../Views/core/marca.php?error=true');
+            header('Location: ../views/core/marca.php?error=true');
         }
 
     }
@@ -15,7 +15,7 @@
         if(isset($_REQUEST)){
             Modificar();
         }else{
-            header('Location: ../Views/core/marca.php?error=true');
+            header('Location: ../views/core/marca.php?error=true');
         }
 
     }
@@ -25,7 +25,7 @@
         if(isset($_REQUEST)){
             GuardarS();
         }else{
-            header('Location: ../Views/core/marca.php?error=true');
+            header('Location: ../views/core/marca.php?error=true');
         }
     }   
 
@@ -36,9 +36,9 @@
         $marcas=$marca->Guardar($marca);
         $comparar=json_decode(json_encode($marca),true);
         if($comparar['0']['resultado']=='1'){
-            header('Location: ../Views/core/marca.php?success=true');
+            header('Location: ../views/core/marca.php?success=true');
         }else{
-            header('Location: ../Views/core/marca.php?error=true');
+            header('Location: ../views/core/marca.php?error=true');
         }
 
     }
@@ -51,9 +51,9 @@
         $marcas=$marca->Modificar($marca);
         $comparar=json_decode(json_encode($marca),true);
         if($comparar['0']['resultado']=='1'){
-            header('Location: ../Views/core/marca.php?success=true');
+            header('Location: ../views/core/marca.php?success=true');
         }else{
-            header('Location: ../Views/core/marca.php?error=true');
+            header('Location: ../views/core/marca.php?error=true');
         }
 
     }

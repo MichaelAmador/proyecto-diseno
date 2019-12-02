@@ -22,7 +22,6 @@
             }
 	    }
 	
-	
 		public function listar(){
             try{
                 $result = array();

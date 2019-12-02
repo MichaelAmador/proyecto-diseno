@@ -7,7 +7,7 @@
         <div class=footer-item2>
             <h3>Contacto</h3>
             <ul>
-                <li><span>Telefono</span></li>
+                <li><span>Teléfono</span></li>
                 <li>
                     <p>(505) 2713-XXXX</p>
                 </li>
@@ -23,9 +23,11 @@
                 <li><span>Politicas de Privacidad</span></li>
 
                 <li><span>Terminos y Condiciones</span></li>
+
+                <a href="?c=productos"><li><span>Iniciar Sesión Administrador</span></li></a>
             </ul>
         </div>
-    </div>
+    </div>3
     <div class="copyright">
         <p><span>&copy; 2019</span>, Todos Los Derechos Reservados</p>
     </div>

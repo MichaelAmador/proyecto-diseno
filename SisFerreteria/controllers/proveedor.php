@@ -6,7 +6,7 @@
         if(isset($_REQUEST)){
             Guardar();
         }else{
-            header('Location: ../Views/core/proveedor.php?error=true');
+            header('Location: ../views/core/proveedor.php?error=true');
         }
 
     }
@@ -15,7 +15,7 @@
         if(isset($_REQUEST)){
             Modificar();
         }else{
-            header('Location: ../Views/core/proveedor.php?error=true');
+            header('Location: ../views/core/proveedor.php?error=true');
         }
 
     }
@@ -25,7 +25,7 @@
         if(isset($_REQUEST)){
             GuardarS();
         }else{
-            header('Location: ../Views/core/proveedor.php?error=true');
+            header('Location: ../views/core/proveedor.php?error=true');
         }
     }
 
@@ -39,9 +39,9 @@
         $proveedors=$proveedor->Guardar($proveedor);
         $comparar=json_decode(json_encode($proveedor),true);
         if($comparar['0']['resultado']=='1'){
-            header('Location: ../Views/core/proveedor.php?success=true');
+            header('Location: ../views/core/proveedor.php?success=true');
         }else{
-            header('Location: ../Views/core/proveedor.php?error=true');
+            header('Location: ../views/core/proveedor.php?error=true');
         }
 
     }
@@ -57,9 +57,9 @@
         $proveedors=$proveedor->Modificar($proveedor);
         $comparar=json_decode(json_encode($proveedor),true);
         if($comparar['0']['resultado']=='1'){
-            header('Location: ../Views/core/proveedor.php?success=true');
+            header('Location: ../views/core/proveedor.php?success=true');
         }else{
-            header('Location: ../Views/core/proveedor.php?error=true');
+            header('Location: ../views/core/proveedor.php?error=true');
         }
 
     }
