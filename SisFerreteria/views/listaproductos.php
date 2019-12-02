@@ -26,14 +26,14 @@
             </div>
             <div class="columna2">
                 <div class="nombre">
-                    <a href=""><span><?php echo $colum->nombre; ?></span></a>
+                    <a href="?c=productos&a=Index2&verprod=<?php echo $colum->idproducto;?>"><span><?php echo $colum->nombre; ?></span></a>
                 </div>
                 <div class="descripcion">
-                    <span>marca <?php echo $colum->marca; ?> </span>
-                    <span>Precio <?php echo $colum->precio; ?></span>
+                    <span>Marca</span><p><?php echo $colum->marca; ?></p>
+                    <span>Precio C$</span><p> <?php echo $colum->precio; ?></p>
                 </div>
                 <div class="ver">
-                    <a href="?c=productos&a=Index2&verprod=<?php echo $colum->idproducto; ?>" class="boton">
+                    <a href="?c=productos&a=Index2&verprod=<?php echo $colum->idproducto;?>" class="boton">
                         Ver Detalles
                     </a>
                 </div>

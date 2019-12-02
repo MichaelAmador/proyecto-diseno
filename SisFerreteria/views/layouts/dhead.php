@@ -9,5 +9,6 @@
     <link rel="stylesheet" href="././assets/css/estilosFooter.css">
     <link rel="stylesheet" href="././assets/css/home.css">
     <link rel="stylesheet" href="././assets/css/listaproductos.css">
+    <link rel="stylesheet" href="././assets/css/estilodetalle.css">
     <link rel="stylesheet" href="././assets/css/all.css">
     <link rel="stylesheet" href="././assets/css/all.min.css">
