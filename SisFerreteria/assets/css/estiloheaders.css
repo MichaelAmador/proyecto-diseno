@@ -228,6 +228,7 @@ header {
     .menu-items li:hover>ul {
         display: flex;
         position: absolute;
+        flex-direction: column;
     }
     .menu-items li ul li a:hover {
         color: rgb(252, 87, 11);

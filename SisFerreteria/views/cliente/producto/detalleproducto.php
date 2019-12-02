@@ -29,7 +29,7 @@
             </div>
             <div class="ver">
                 <a href="?c=productos&a=Index2&verprod=<?php echo $productos->idproducto;?>" class="boton">
-                    Ver Detalles
+                    Agregar
                 </a>
             </div>
 
