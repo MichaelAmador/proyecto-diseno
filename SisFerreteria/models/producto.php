@@ -59,13 +59,10 @@
 		{
 			try 
 			{
-				$stm = $this->pdo
-					->prepare("select idproducto, p.nombre Producto,c.nombre Categoria,m.nombre Marca,precio,imagen
-                    from producto p inner join marca m on m.idmarca = p.marca inner join categoria c on c.idcategoria = p.categoria 
-                    where p.nombre like ?");
-						  
-                $param = ["%$buscador%"];
-				$stm->execute($param);
+                $sql= "CALL buscador( ? )";
+                $stm = $this->pdo->prepare($sql);
+                $stm->bindParam(1,$buscador,PDO::PARAM_STR);
+				$stm->execute();
 				return $stm->fetchAll(PDO::FETCH_OBJ);
 			} catch (Exception $e) 
 			{

@@ -33,7 +33,7 @@
                     <span>Precio <?php echo $colum->precio; ?></span>
                 </div>
                 <div class="ver">
-                    <a href="" class="boton">
+                    <a href="?c=productos&a=Index2&verprod=<?php echo $colum->idproducto; ?>" class="boton">
                         Ver Detalles
                     </a>
                 </div>
