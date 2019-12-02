@@ -51,7 +51,7 @@
             <div class="texto">
                 <p>Iluminación</p>
             </div>
-            <a href="#" class="boton">Ver Más</a>
+            <a href="?c=productos&buscar=iluminacion" class="boton">Ver Más</a>
         </div>
         <div class="item">
             <div class="imagen">
@@ -60,7 +60,7 @@
             <div class="texto">
                 <p>Cerrageria</p>
             </div>
-            <a href="#" class="boton">Ver Más</a>
+            <a href="?c=productos&buscar=cerrajeria" class="boton">Ver Más</a>
         </div>
         <!--
         <div class="item">

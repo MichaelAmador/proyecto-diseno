@@ -12,7 +12,8 @@
             <ul class="menu-items" id="MenuItem">
                 <li>
                     <form action="?c=productos" method="post">
-                        <input type="text" name="buscar" id="buscar" placeholder="Encuentra tu producto"><button><i class="fas fa-search"></i></button></form>
+                        <input type="text" name="buscar" id="buscar" placeholder="Encuentra tu producto"><button><i
+                                class="fas fa-search"></i></button></form>
                 </li>
                 <li><a href="#">Catalogo</a>
                     <ul>
@@ -23,6 +24,7 @@
                 <li><a href="#">Compras</a></li>
                 <li><a href="#"><Span>Usuario</Span><i class="fas fa-user"></i></a>
                     <ul>
+                        <li><a href="?c=login">Iniciar Sesión</a></li>
                         <li><a href="#">Cerrar Sesión</a></li>
                     </ul>
                 </li>

@@ -31,7 +31,6 @@ html {
 .lista .item_lista {
     display: flex;
     width: 90%;
-    /**/
     height: auto;
     margin: auto auto 15px auto;
     border-bottom: 1px solid black;
@@ -49,7 +48,6 @@ html {
 
 .item_lista .columna1 .imagen {
     width: 100%;
-    background-color: lawngreen;
     height: 200px;
 }
 
@@ -60,18 +58,34 @@ html {
 
 .item_lista .columna2 .nombre {
     width: 100%;
-    background-color: red;
     height: 110px;
     margin-bottom: 10px;
     font-size: 1.2em;
 }
 
+.item_lista .columna2 .nombre a {
+    text-decoration: none;
+    font-size: 18pt;
+    color: black;
+}
+
+.item_lista .columna2 .nombre a:hover {
+    color: blue;
+}
+
 .item_lista .columna2 .descripcion {
+    display: flex;
     width: calc();
-    background-color: purple;
     height: 80px;
     margin-bottom: 10px;
     font-size: 1.2em;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.item_lista .columna2 .descripcion span {
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .item_lista .columna2 .ver {

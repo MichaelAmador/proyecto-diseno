@@ -41,11 +41,12 @@
         }
 		
 
-		public function listars(){
+		public function listardetalle($idproducto){
             try{
                 $result = array();
-                $stm = $this->pdo->prepare("select Idsolicitud, cliente.nombre, Solicitante, numerocontrato,motivo from solicitud, cliente WHERE solicitud.Solicitante=cliente.idcliente;");
-                $stm->execute();
+                $stm = $this->pdo->prepare("select idproducto, p.nombre Producto,c.nombre Categoria,m.nombre Marca,precio,imagen
+                from producto p inner join marca m on m.idmarca = p.marca inner join categoria c on c.idcategoria = p.categoria where idproducto=?;");
+                $stm->execute(array($idproducto));
 
                 return $stm->fetchAll(PDO::FETCH_OBJ);
             }

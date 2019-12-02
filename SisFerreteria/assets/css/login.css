@@ -1,0 +1,86 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: 'open sans';
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+header {
+    background-color: #ffffff;
+    height: auto;
+    border: 1px solid black;
+    padding: 5px;
+    box-shadow: 0 1pt 6pt #2B2B2B;
+    margin-bottom: 80px;
+}
+
+header a {
+    color: #E86020;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.conteinerlogin {
+    width: 80%;
+    margin: auto;
+    margin-top: 40;
+}
+
+.conteinerlogin .formulario {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    margin: auto;
+    background-color: darkgray;
+    padding: 20px;
+}
+
+.conteinerlogin .formulario .item [type="text"] {
+    width: 400px;
+    height: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+    padding: 10px;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.conteinerlogin .formulario .item [type="password"] {
+    width: 400px;
+    height: 30px;
+    margin-bottom: 20px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+    padding: 10px;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+footer {
+    justify-content: flex-end;
+}
