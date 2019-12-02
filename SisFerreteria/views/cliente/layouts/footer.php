@@ -24,7 +24,7 @@
 
                 <li><span>Terminos y Condiciones</span></li>
 
-                <a href="?c=productos"><li><span>Iniciar Sesión Administrador</span></li></a>
+                <li><a href="?c=login&a=Index2">SIST</a></li>
             </ul>
         </div>
     </div>3
