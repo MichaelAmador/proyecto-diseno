@@ -96,7 +96,7 @@
             {
             $out='';
             $result = array();
-            $sql = "CALL modificarProducto(?, ? , ? , ?)";
+            $sql = "CALL modificarProducto(, ? , ? , ?)";
             $stm = $this->pdo->prepare($sql);
             $stm->bindParam(1,$data->idproducto,PDO::PARAM_INT);
             $stm->bindParam(2,$data->nombre,PDO::PARAM_STR);
