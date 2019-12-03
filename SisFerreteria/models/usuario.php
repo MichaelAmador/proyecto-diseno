@@ -38,6 +38,13 @@
                 die($e->getMessage());
             }
         }
+
+        public function login($user, $clave)
+        {
+            $stm = $this->pdo->prepare("SELECT * FROM usuario WHERE login=? AND clave =?");
+            $stm->execute(array($user, $clave));
+            return $stm->fetch(PDO::FETCH_OBJ);
+        }
 		
 		public function Buscar($buscador)
 		{

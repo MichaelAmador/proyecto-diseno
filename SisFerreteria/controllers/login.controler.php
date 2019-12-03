@@ -24,6 +24,27 @@
             
 
         }
+
+        public function Ingresar(){
+            $login = new Usuario();
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                $data = [
+    
+                    'usuario' => trim($_POST['usuario']),
+                    'clave' => trim($_POST['clave']),
+                ];
+    
+                $loggedInUser = $login->login($data['usuario'], $data['clave']);
+    
+                if ($loggedInUser) {
+                    $this->createUserSession($loggedInUser);
+                } else {
+                    $popup = 'Usuario Incorrecto';
+                    $this->CargarPagina($popup);
+                }
+            }
+        }
      
 
     }
