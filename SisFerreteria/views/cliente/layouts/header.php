@@ -1,12 +1,19 @@
 <?php 
+    session_start();
+    if (isset($_SESSION['usuario'])) {
+        $valor=$_SESSION['usuario'];
+        
+    }else{
+        $_SESSION['usuario']='Usuario';
+        $valor=$_SESSION['usuario'];
+        
+    }
+    if($valor=='Usuario'){
+        $usuario=$valor;
+    }else{
+        $usuario=$valor;
+    }
 
-$valor='';
-
-if($valor==''){
-   $usuario="Usuario"; 
-}else{
-    $usuario = $valor;
-}
 ?>
 <body>
     <header>
@@ -38,7 +45,7 @@ if($valor==''){
                         <li><a href="?c=login">Iniciar Sesión</a></li>
                         <?php }?>
                        <?php if($usuario!='Usuario') {?>
-                        <li><a href="#">Cerrar Sesión</a></li>
+                        <li><a href="?c=index&a=Cerrar">Cerrar Sesión</a></li>
                        <?php } ?>
                     </ul>
                 </li>
