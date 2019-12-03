@@ -1,7 +1,11 @@
 <?php
-
+    require_once './models/usuario.php';
     class _aloginController{
-        
+        public function __CONSTRUCT()
+        {
+            $this->model = new usuario();
+        }
+    
         public function loginadmin(){
             include_once "views/admin/loginadmin.php";
         }

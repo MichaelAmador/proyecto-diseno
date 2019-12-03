@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : MySQLWEB
+ Source Server         : Mysql
  Source Server Type    : MySQL
- Source Server Version : 100316
- Source Host           : localhost:3307
+ Source Server Version : 80016
+ Source Host           : localhost:3306
  Source Schema         : ferreteria_castillo
 
  Target Server Type    : MySQL
- Target Server Version : 100316
+ Target Server Version : 80016
  File Encoding         : 65001
 
- Date: 03/12/2019 13:20:56
+ Date: 03/12/2019 14:17:16
 */
 
 SET NAMES utf8mb4;
@@ -40,7 +40,7 @@ INSERT INTO `categoria` VALUES (4, 'cerrajeria');
 -- ----------------------------
 DROP TABLE IF EXISTS `compra`;
 CREATE TABLE `compra`  (
-  `idcompra` int(255) NOT NULL,
+  `idcompra` int(255) NOT NULL AUTO_INCREMENT,
   `fecha` date NULL DEFAULT NULL,
   `subtotal` double(255, 0) NULL DEFAULT NULL,
   `descuento` double(255, 0) NULL DEFAULT NULL,
@@ -50,8 +50,8 @@ CREATE TABLE `compra`  (
   PRIMARY KEY (`idcompra`) USING BTREE,
   INDEX `fk01_compra`(`idproveedor`) USING BTREE,
   INDEX `fk02_compra`(`idusuario`) USING BTREE,
-  CONSTRAINT `fk01_compra` FOREIGN KEY (`idproveedor`) REFERENCES `proveedor` (`idProveedor`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `fk02_compra` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`idUsuario`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `fk02_compra` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`idUsuario`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk01_compra` FOREIGN KEY (`idproveedor`) REFERENCES `proveedor` (`idProveedor`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -59,7 +59,7 @@ CREATE TABLE `compra`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `detalle_compra`;
 CREATE TABLE `detalle_compra`  (
-  `iddetallecompra` int(255) NOT NULL,
+  `iddetallecompra` int(255) NOT NULL AUTO_INCREMENT,
   `idcompra` int(255) NULL DEFAULT NULL,
   `idproducto` int(255) NULL DEFAULT NULL,
   `precio` double(255, 0) NULL DEFAULT NULL,
@@ -67,8 +67,8 @@ CREATE TABLE `detalle_compra`  (
   PRIMARY KEY (`iddetallecompra`) USING BTREE,
   INDEX `fk01_detallecompra`(`idcompra`) USING BTREE,
   INDEX `fk02_detallecompra`(`idproducto`) USING BTREE,
-  CONSTRAINT `fk01_detallecompra` FOREIGN KEY (`idcompra`) REFERENCES `compra` (`idcompra`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `fk02_detallecompra` FOREIGN KEY (`idproducto`) REFERENCES `producto` (`idProducto`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `fk02_detallecompra` FOREIGN KEY (`idproducto`) REFERENCES `producto` (`idProducto`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk01_detallecompra` FOREIGN KEY (`idcompra`) REFERENCES `compra` (`idcompra`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -76,7 +76,7 @@ CREATE TABLE `detalle_compra`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `detalle_venta`;
 CREATE TABLE `detalle_venta`  (
-  `idDetalleventa` int(255) NOT NULL,
+  `idDetalleventa` int(255) NOT NULL AUTO_INCREMENT,
   `idventa` int(255) NULL DEFAULT NULL,
   `idproducto` int(255) NULL DEFAULT NULL,
   `precio` double(255, 0) NULL DEFAULT NULL,
@@ -84,8 +84,8 @@ CREATE TABLE `detalle_venta`  (
   PRIMARY KEY (`idDetalleventa`) USING BTREE,
   INDEX `fk01_detalleventa`(`idventa`) USING BTREE,
   INDEX `fk02_detalleventa`(`idproducto`) USING BTREE,
-  CONSTRAINT `fk01_detalleventa` FOREIGN KEY (`idventa`) REFERENCES `venta` (`idVenta`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `fk02_detalleventa` FOREIGN KEY (`idproducto`) REFERENCES `producto` (`idProducto`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `fk02_detalleventa` FOREIGN KEY (`idproducto`) REFERENCES `producto` (`idProducto`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk01_detalleventa` FOREIGN KEY (`idventa`) REFERENCES `venta` (`idVenta`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -93,12 +93,12 @@ CREATE TABLE `detalle_venta`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `inventario`;
 CREATE TABLE `inventario`  (
-  `idInventario` int(255) NOT NULL,
+  `idInventario` int(255) NOT NULL AUTO_INCREMENT,
   `idProducto` int(255) NULL DEFAULT NULL,
   `cantidad` double(255, 0) NULL DEFAULT NULL,
   PRIMARY KEY (`idInventario`) USING BTREE,
   INDEX `fk01_inventario`(`idProducto`) USING BTREE,
-  CONSTRAINT `fk01_inventario` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`idProducto`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `fk_01producto` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`idProducto`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -106,7 +106,7 @@ CREATE TABLE `inventario`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `marca`;
 CREATE TABLE `marca`  (
-  `idmarca` int(255) NULL DEFAULT NULL,
+  `idmarca` int(255) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(30) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   INDEX `idmarca`(`idmarca`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
@@ -121,7 +121,7 @@ INSERT INTO `marca` VALUES (1, 'eagle electric');
 -- ----------------------------
 DROP TABLE IF EXISTS `medidas`;
 CREATE TABLE `medidas`  (
-  `idmedida` int(255) NULL DEFAULT NULL,
+  `idmedida` int(255) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(20) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   `abreviacion` varchar(5) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   INDEX `idmedida`(`idmedida`) USING BTREE
@@ -136,8 +136,8 @@ CREATE TABLE `medidas_productos`  (
   `idproducto` int(255) NULL DEFAULT NULL,
   INDEX `fk01_medidaproducto`(`idmedida`) USING BTREE,
   INDEX `fk02_medidaproducto`(`idproducto`) USING BTREE,
-  CONSTRAINT `fk01_medidaproducto` FOREIGN KEY (`idmedida`) REFERENCES `medidas` (`idmedida`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `fk02_medidaproducto` FOREIGN KEY (`idproducto`) REFERENCES `producto` (`idProducto`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `fk02_medidaproducto` FOREIGN KEY (`idproducto`) REFERENCES `producto` (`idProducto`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk01_medidaproducto` FOREIGN KEY (`idmedida`) REFERENCES `medidas` (`idmedida`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -145,7 +145,7 @@ CREATE TABLE `medidas_productos`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `producto`;
 CREATE TABLE `producto`  (
-  `idProducto` int(255) NOT NULL,
+  `idProducto` int(255) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(30) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   `marca` int(30) NULL DEFAULT NULL,
   `precio` double(255, 0) NULL DEFAULT NULL,
@@ -155,8 +155,8 @@ CREATE TABLE `producto`  (
   INDEX `idProducto`(`idProducto`) USING BTREE,
   INDEX `fk01_producto`(`marca`) USING BTREE,
   INDEX `fk02_producto`(`categoria`) USING BTREE,
-  CONSTRAINT `fk01_producto` FOREIGN KEY (`marca`) REFERENCES `marca` (`idmarca`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `fk02_producto` FOREIGN KEY (`categoria`) REFERENCES `categoria` (`idcategoria`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `fk02_producto` FOREIGN KEY (`categoria`) REFERENCES `categoria` (`idcategoria`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk01_producto` FOREIGN KEY (`marca`) REFERENCES `marca` (`idmarca`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -170,7 +170,7 @@ INSERT INTO `producto` VALUES (2, 'toma corriente', 1, 40, NULL, 1);
 -- ----------------------------
 DROP TABLE IF EXISTS `proveedor`;
 CREATE TABLE `proveedor`  (
-  `idProveedor` int(255) NOT NULL,
+  `idProveedor` int(255) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   `direccion` varchar(80) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   `telefono` varchar(16) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
@@ -193,7 +193,7 @@ CREATE TABLE `tipo_usuario`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `usuario`;
 CREATE TABLE `usuario`  (
-  `idUsuario` int(255) NOT NULL,
+  `idUsuario` int(255) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(25) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   `apellido` varchar(25) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   `login` varchar(20) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
@@ -209,7 +209,7 @@ CREATE TABLE `usuario`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `venta`;
 CREATE TABLE `venta`  (
-  `idVenta` int(255) NULL DEFAULT NULL,
+  `idVenta` int(255) NOT NULL AUTO_INCREMENT,
   `fecha` date NULL DEFAULT NULL,
   `subtotal` double(255, 0) NULL DEFAULT NULL,
   `descuento` double(255, 0) NULL DEFAULT NULL,
@@ -217,7 +217,7 @@ CREATE TABLE `venta`  (
   `idusuario` int(255) NULL DEFAULT NULL,
   INDEX `fk01_venta`(`idusuario`) USING BTREE,
   INDEX `idVenta`(`idVenta`) USING BTREE,
-  CONSTRAINT `fk01_venta` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`idUsuario`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `fk01_ventas` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`idUsuario`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
