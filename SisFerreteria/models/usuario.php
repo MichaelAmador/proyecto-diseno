@@ -69,11 +69,8 @@
             $stm->bindParam(2,$data->apellido,PDO::PARAM_STR);   
             $stm->bindParam(3,$data->login,PDO::PARAM_STR);   
             $stm->bindParam(4,$data->clave,PDO::PARAM_STR);   
-            $stm->bindParam(5,$data->tipo_user,PDO::PARAM_STR);           
-            $stm->execute();
-             
-            return $stm->fetchAll(PDO::FETCH_OBJ);
-            
+            $stm->bindParam(5,$data->tipoUser,PDO::PARAM_STR);           
+            $stm->execute();            
             } catch (Exception $e) 
             {
                 die($e->getMessage());
@@ -93,7 +90,7 @@
             $stm->bindParam(3,$data->apellido,PDO::PARAM_STR);
             $stm->bindParam(4,$data->login,PDO::PARAM_STR);
             $stm->bindParam(5,$data->clave,PDO::PARAM_STR);
-            $stm->bindParam(6,$data->tipo_usuario,PDO::PARAM_STR);
+            $stm->bindParam(6,$data->tipoUser,PDO::PARAM_STR);
            
             $stm->execute();
              

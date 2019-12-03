@@ -37,16 +37,14 @@
                     <div class="derecha">
                         <button type="submit">Registrarse</button>
                     </div>
-
                 </div>
-            </div>
-            <?php
+                <?php
                         if(isset($_GET['success'])){ 
                     
                             echo "<script type=\"text/javascript\">alert(\"usuario registrado\");</script>"; 
                     ?>
-                            <div>
-                                La cita se ha agregado creado.
+                            <div class="mensaje">
+                                <p>Se registrado un usuario</p>
                             </div>
                     <?php
                         }else if(isset($_GET['error'])){
@@ -57,6 +55,8 @@
                     <?php
                         }
                     ?>
+            </div>
+           
 
         </form>
 

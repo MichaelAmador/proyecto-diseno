@@ -18,9 +18,9 @@
             $user->login=$_POST['usuario'];
             $user->clave=$_POST['pass'];
             $user->tipoUser=$tipousuario;
-           // $usuario=$user->Guardar($user);
+            $usuario=$user->Guardar($user);
             echo var_dump($user);
-            //header('Location:?c=login&a=registrarse&success=true');
+            header('Location:?c=login&a=registrarse&success=true');
             
 
         }

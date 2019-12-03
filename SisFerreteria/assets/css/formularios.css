@@ -90,3 +90,10 @@ html {
     color: white;
     cursor: pointer;
 }
+
+.formulario .mensaje {
+    height: auto;
+    font-size: 18pt;
+    color: green;
+    background-color: honeydew;
+}

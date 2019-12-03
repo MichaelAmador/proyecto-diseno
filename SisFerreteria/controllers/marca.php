@@ -1,5 +1,5 @@
 <?php
-    include dirname(__file__,2).'../models/marca.php';    
+    require_once dirname(__file__,2).'../models/marca.php';    
 
     
     if(isset($_REQUEST['nuevaMarca'])){

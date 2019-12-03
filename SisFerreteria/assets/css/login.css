@@ -128,6 +128,15 @@ header a {
     font-weight: 600;
 }
 
+.conteinerlogin .formulario .mensaje {
+    height: auto;
+    background-color: white;
+}
+
+.conteinerlogin>.formulario>.mensaje>p {
+    color: green;
+}
+
 footer {
     display: flex;
     flex-direction: column;
