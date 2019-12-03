@@ -12,7 +12,7 @@
 
 <body>
     <header>
-        <a href="?c=Index">Ferreteria Castillo</a>
+        <a href="">Ferreteria Castillo</a>
     </header>
     <div class="conteinerlogin">
 

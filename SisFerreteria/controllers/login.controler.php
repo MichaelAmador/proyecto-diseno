@@ -21,7 +21,7 @@
             $tipousuario=3;
             $user->nombre=$_POST['nombre'];
             $user->apellido=$_POST['apellido'];
-            $user->login=$_POST['usuario'];
+            $user->usuario=$_POST['usuario'];
             $user->clave=$_POST['pass'];
             $user->tipoUser=$tipousuario;
             $usuario=$user->Guardar($user);
@@ -70,7 +70,7 @@
         }
         public function CargarPagina()
         {
-            require_once('View/login/login.php');
+            require_once('views/cliente/login.php');
         }
     }
      
