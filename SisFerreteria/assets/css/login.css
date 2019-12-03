@@ -50,14 +50,17 @@ header a {
     flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
-    width: 50%;
+    width: 100%;
     margin: auto;
-    background-color: darkgray;
+    background-color: #e2e2e2;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
     padding: 20px;
 }
 
 .conteinerlogin .formulario .item [type="text"] {
-    width: 400px;
+    width: calc();
     height: 30px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -67,10 +70,11 @@ header a {
     padding: 10px;
     font-weight: 400;
     font-size: 20px;
+    border: 1px solid black;
 }
 
 .conteinerlogin .formulario .item [type="password"] {
-    width: 400px;
+    width: calc();
     height: 30px;
     margin-bottom: 20px;
     -webkit-border-radius: 25px;
@@ -79,8 +83,46 @@ header a {
     padding: 10px;
     font-weight: 400;
     font-size: 20px;
+    border: 1px solid black;
+}
+
+.botones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.botones button {
+    padding: 5px;
+    margin: 5px;
+    background-color: rgb(255, 255, 255);
+    color: #E86020;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: 1px solid black;
+    box-shadow: none;
+}
+
+.botones button:hover {
+    background-color: #E86020;
+    color: #ffffff;
+}
+
+.botones .izquierda span {
+    font-weight: 600;
 }
 
 footer {
-    justify-content: flex-end;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    width: 100%;
+}
+
+footer span {
+    text-align: center;
 }

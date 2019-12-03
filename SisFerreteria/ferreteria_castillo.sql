@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : MySQLWEB
+ Source Server         : Mysql
  Source Server Type    : MySQL
- Source Server Version : 100316
- Source Host           : localhost:3307
+ Source Server Version : 80016
+ Source Host           : localhost:3306
  Source Schema         : ferreteria_castillo
 
  Target Server Type    : MySQL
- Target Server Version : 100316
+ Target Server Version : 80016
  File Encoding         : 65001
 
- Date: 02/12/2019 11:25:57
+ Date: 02/12/2019 21:08:07
 */
 
 SET NAMES utf8mb4;
@@ -68,7 +68,7 @@ CREATE TABLE `detalle_compra`  (
   INDEX `fk01_detallecompra`(`idcompra`) USING BTREE,
   INDEX `fk02_detallecompra`(`idproducto`) USING BTREE,
   CONSTRAINT `fk01_detallecompra` FOREIGN KEY (`idcompra`) REFERENCES `compra` (`idcompra`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `fk02_detallecompra` FOREIGN KEY (`idproducto`) REFERENCES `producto` (`idProducto`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `fk02_productodetalle` FOREIGN KEY (`idproducto`) REFERENCES `producto` (`idProducto`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -85,7 +85,7 @@ CREATE TABLE `detalle_venta`  (
   INDEX `fk01_detalleventa`(`idventa`) USING BTREE,
   INDEX `fk02_detalleventa`(`idproducto`) USING BTREE,
   CONSTRAINT `fk01_detalleventa` FOREIGN KEY (`idventa`) REFERENCES `venta` (`idVenta`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `fk02_detalleventa` FOREIGN KEY (`idproducto`) REFERENCES `producto` (`idProducto`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `fk02_productoventa` FOREIGN KEY (`idproducto`) REFERENCES `producto` (`idProducto`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -98,7 +98,7 @@ CREATE TABLE `inventario`  (
   `cantidad` double(255, 0) NULL DEFAULT NULL,
   PRIMARY KEY (`idInventario`) USING BTREE,
   INDEX `fk01_inventario`(`idProducto`) USING BTREE,
-  CONSTRAINT `fk01_inventario` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`idProducto`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `fk_01productoinventario` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`idProducto`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -137,7 +137,7 @@ CREATE TABLE `medidas_productos`  (
   INDEX `fk01_medidaproducto`(`idmedida`) USING BTREE,
   INDEX `fk02_medidaproducto`(`idproducto`) USING BTREE,
   CONSTRAINT `fk01_medidaproducto` FOREIGN KEY (`idmedida`) REFERENCES `medidas` (`idmedida`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `fk02_medidaproducto` FOREIGN KEY (`idproducto`) REFERENCES `producto` (`idProducto`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `fk02_productomedida` FOREIGN KEY (`idproducto`) REFERENCES `producto` (`idProducto`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -145,7 +145,7 @@ CREATE TABLE `medidas_productos`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `producto`;
 CREATE TABLE `producto`  (
-  `idProducto` int(255) NOT NULL,
+  `idProducto` int(255) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(30) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   `marca` int(30) NULL DEFAULT NULL,
   `precio` double(255, 0) NULL DEFAULT NULL,
@@ -164,6 +164,8 @@ CREATE TABLE `producto`  (
 -- ----------------------------
 INSERT INTO `producto` VALUES (1, 'apagador', 1, 30, NULL, 1);
 INSERT INTO `producto` VALUES (2, 'toma corriente', 1, 40, NULL, 1);
+INSERT INTO `producto` VALUES (3, 'sepo', 1, 25, NULL, 1);
+INSERT INTO `producto` VALUES (4, 'Sepo', NULL, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for proveedor
@@ -189,11 +191,18 @@ CREATE TABLE `tipo_usuario`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of tipo_usuario
+-- ----------------------------
+INSERT INTO `tipo_usuario` VALUES (1, 'administrador');
+INSERT INTO `tipo_usuario` VALUES (2, 'vendedor');
+INSERT INTO `tipo_usuario` VALUES (3, 'cliente');
+
+-- ----------------------------
 -- Table structure for usuario
 -- ----------------------------
 DROP TABLE IF EXISTS `usuario`;
 CREATE TABLE `usuario`  (
-  `idUsuario` int(255) NOT NULL,
+  `idUsuario` int(255) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(25) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   `apellido` varchar(25) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   `login` varchar(20) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
@@ -201,6 +210,7 @@ CREATE TABLE `usuario`  (
   `tipo_usuario` int(255) NULL DEFAULT NULL,
   PRIMARY KEY (`idUsuario`) USING BTREE,
   INDEX `fk01_usuario`(`tipo_usuario`) USING BTREE,
+  INDEX `nombre`(`nombre`) USING BTREE,
   CONSTRAINT `fk01_usuario` FOREIGN KEY (`tipo_usuario`) REFERENCES `tipo_usuario` (`idTipoUsuario`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
@@ -217,7 +227,7 @@ CREATE TABLE `venta`  (
   `idusuario` int(255) NULL DEFAULT NULL,
   INDEX `fk01_venta`(`idusuario`) USING BTREE,
   INDEX `idVenta`(`idVenta`) USING BTREE,
-  CONSTRAINT `fk01_venta` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`idUsuario`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `fk_01venta` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`idUsuario`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -327,38 +337,6 @@ END
 delimiter ;
 
 -- ----------------------------
--- Procedure structure for modificarUsuario
--- ----------------------------
-DROP PROCEDURE IF EXISTS `modificarUsuario`;
-delimiter ;;
-CREATE PROCEDURE `modificarUsuario`(IN pIdUsuario INT,
-IN pNombre VARCHAR(20),
-IN pApellido VARCHAR(20),
-IN pLogin VARCHAR(20),
-IN pClave VARCHAR(100),
-IN pTipoUser INT)
-BEGIN
-	#Routine body goes here...
-	
-declare x int;
-declare y varchar(10);
-
-UPDATE usuario SET
-nombre = pNombre,
-apellido = pApellido,
-login = pLogin,
-clave = pClave,
-tipo_usuario = pTipoUser
-WHERE
-idUsuario = pIdUsuario;
-
-select y as resultado;
-
-END
-;;
-delimiter ;
-
--- ----------------------------
 -- Procedure structure for nuevaMarca
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `nuevaMarca`;
@@ -440,37 +418,6 @@ if(x >0) then
 	select y as resultado;
 else
 	insert into proveedor(nombre,Direccion,telefono,web) values (pNombre,pDireccion,pTelefono,pWeb);
-    set y =1;
-    select y as resultado;
-end if;
-
-
-END
-;;
-delimiter ;
-
--- ----------------------------
--- Procedure structure for nuevoUsuario
--- ----------------------------
-DROP PROCEDURE IF EXISTS `nuevoUsuario`;
-delimiter ;;
-CREATE PROCEDURE `nuevoUsuario`(IN pNombre VARCHAR(20),
-IN pApellido VARCHAR(20),
-IN pLogin VARCHAR(20),
-IN pClave VARCHAR(100),
-IN pTipoUser INT)
-BEGIN
-	#Routine body goes here...
-declare x int;
-declare y varchar(10);
-
-select count(*) into x from usuario where nombre = pNombre and apellido = pApellido and login = pLogin;
-
-if(x >0) then
-	set y = 0;
-	select y as resultado;
-else
-	insert into usuario(nombre,apellido,login,clave,tipo_usuario) values (pNombre,pApellido,pLogin,pClave,pTipoUser);
     set y =1;
     select y as resultado;
 end if;
