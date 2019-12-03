@@ -16,27 +16,7 @@
             require_once 'views/cliente/layouts/footer.php';
         }
 
-    
-
-
-
-
-
-
-
-
-
-
-
     }
-
-
-
-
-
-
-
-
 
 
 ?>

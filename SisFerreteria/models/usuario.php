@@ -7,7 +7,7 @@
         public $idusuario;
         public $nombre; 
         public $apellido;
-        public $login;
+        public $usuario;
         public $clave;
         public $tipoUser;
         public $buscador;      
@@ -74,7 +74,7 @@
             $stm = $this->pdo->prepare($sql);
             $stm->bindParam(1,$data->nombre,PDO::PARAM_STR);   
             $stm->bindParam(2,$data->apellido,PDO::PARAM_STR);   
-            $stm->bindParam(3,$data->login,PDO::PARAM_STR);   
+            $stm->bindParam(3,$data->usuario,PDO::PARAM_STR);   
             $stm->bindParam(4,$data->clave,PDO::PARAM_STR);   
             $stm->bindParam(5,$data->tipoUser,PDO::PARAM_STR);           
             $stm->execute();            
@@ -95,7 +95,7 @@
             $stm->bindParam(1,$data->idusuario,PDO::PARAM_INT);
             $stm->bindParam(2,$data->nombre,PDO::PARAM_STR);
             $stm->bindParam(3,$data->apellido,PDO::PARAM_STR);
-            $stm->bindParam(4,$data->login,PDO::PARAM_STR);
+            $stm->bindParam(4,$data->usuario,PDO::PARAM_STR);
             $stm->bindParam(5,$data->clave,PDO::PARAM_STR);
             $stm->bindParam(6,$data->tipoUser,PDO::PARAM_STR);
            
