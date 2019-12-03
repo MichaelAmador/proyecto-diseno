@@ -60,7 +60,7 @@
     
             $_SESSION['usuario'] = $usuarioactivo;
             $_SESSION['tipo_usuario'] = $rol;
-    
+        
             if ($_SESSION['tipo_usuario'] == 3) {
                 header('Location:?c=index');
             }  else{

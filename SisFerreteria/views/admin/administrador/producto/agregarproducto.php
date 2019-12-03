@@ -12,7 +12,7 @@
             <input type="text" name="nombre" id="">
             <input type="text" name="marca" id="">
             <input type="text" name="precio" id="">
-            <input type="File" name="imagen" id="">
+            <input type="File" name="productoimagen" id="producto">
             <select name="categoria" id="">
                 <?php foreach($categorias as $colum): ?>
                 <option value="<?php echo $colum->idcategoria ?>"><?php echo $colum->nombre ?></option>

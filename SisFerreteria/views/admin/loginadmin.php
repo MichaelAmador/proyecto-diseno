@@ -16,7 +16,7 @@
     </header>
     <div class="conteinerlogin">
 
-        <form action="?c=_alogin&a=login" method="post">
+        <form action="?c=_aproducto&a=ver" method="post">
             <div class="formulario">
                 <h2>Inicio de Sesión</h2>
                 <div class="item usuario">
