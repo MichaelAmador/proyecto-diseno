@@ -72,8 +72,8 @@
             $stm->bindParam(5,$data->tipo_user,PDO::PARAM_STR);           
             $stm->execute();
              
-            $out=$stm->fetchAll(PDO::FETCH_OBJ);
-            return $out;
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+            
             } catch (Exception $e) 
             {
                 die($e->getMessage());

@@ -16,21 +16,21 @@
     </header>
     <div class="conteinerlogin">
 
-        <form action="?c=login&a=Registrar" method="post">
+        <form action="?c=login&a=Registro" method="post">
             <div class="formulario">
                 <h2>Registrarse</h2>
                 <div class="item usuario">
-                    <input type="text" name="" id="" placeholder="Nombre">
+                    <input type="text" name="nombre" id="" placeholder="Nombre">
                 </div>
                 <div class="item usuario">
-                    <input type="text" name="" id="" placeholder="Apellido">
+                    <input type="text" name="apellido" id="" placeholder="Apellido">
                 </div>
                 <div class="item usuario">
-                    <input type="text" name="" id="" placeholder="Usuario">
+                    <input type="text" name="usuario" id="" placeholder="Usuario">
                 </div>
 
                 <div class="item usuario">
-                    <input type="password" name="" id="" placeholder="Contraseña">
+                    <input type="password" name="pass" id="" placeholder="Contraseña">
                 </div>
 
                 <div class="botones">
@@ -40,7 +40,23 @@
 
                 </div>
             </div>
-
+            <?php
+                        if(isset($_GET['success'])){ 
+                    
+                            echo "<script type=\"text/javascript\">alert(\"usuario registrado\");</script>"; 
+                    ?>
+                            <div>
+                                La cita se ha agregado creado.
+                            </div>
+                    <?php
+                        }else if(isset($_GET['error'])){
+                    ?>
+                            <div>
+                                Ha ocurrido un error al crear la cita, por favor intente de nuevo.
+                            </div>
+                    <?php
+                        }
+                    ?>
 
         </form>
 

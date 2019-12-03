@@ -35,7 +35,7 @@ if($valor==''){
                 <li><a href="#"><Span><?php echo $usuario?></Span><i class="fas fa-user"></i></a>
                     <ul>
                         <?php if($usuario=='Usuario'){ ?>
-                        <li><a href="?c=_login">Iniciar Sesión</a></li>
+                        <li><a href="?c=login">Iniciar Sesión</a></li>
                         <?php }?>
                        <?php if($usuario!='Usuario') {?>
                         <li><a href="#">Cerrar Sesión</a></li>

@@ -1,5 +1,5 @@
 <?php
-    require_once 'models/usuario.php';
+    require_once './models/usuario.php';
     class LoginController{
        
         public function Index(){
@@ -7,10 +7,21 @@
         }
 
         public function registrarse(){
-            include_once "views/cliente/registrar.php";
+            require_once "views/cliente/registrar.php";
         }
        
-        public function Registrar(){
+        public function Registro(){
+            $user = new usuario();
+            $tipousuario=3;
+            $user->nombre=$_POST['nombre'];
+            $user->apellido=$_POST['apellido'];
+            $user->login=$_POST['usuario'];
+            $user->clave=$_POST['pass'];
+            $user->tipoUser=$tipousuario;
+           // $usuario=$user->Guardar($user);
+            echo var_dump($user);
+            //header('Location:?c=login&a=registrarse&success=true');
+            
 
         }
      
