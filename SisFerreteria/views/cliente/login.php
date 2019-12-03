@@ -16,15 +16,15 @@
     </header>
     <div class="conteinerlogin">
 
-        <form action="" method="post">
+        <form action="?c=login&a=Ingresar" method="post">
             <div class="formulario">
                 <h2>Inicio de Sesión</h2>
                 <div class="item usuario">
-                    <input type="text" name="" id="" placeholder="Usuario">
+                    <input type="text" name="usuario" id="" placeholder="Usuario">
                 </div>
 
                 <div class="item usuario">
-                    <input type="password" name="" id="" placeholder="Contraseña">
+                    <input type="password" name="clave" id="" placeholder="Contraseña">
                 </div>
 
                 <div class="botones">
