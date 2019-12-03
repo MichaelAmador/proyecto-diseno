@@ -6,7 +6,7 @@
         if(isset($_REQUEST)){
             Guardar();
         }else{
-            header('Location: ../Views/core/producto.php?error=true');
+            header('Location: ../views/core/producto.php?error=true');
         }
 
     }
@@ -15,7 +15,7 @@
         if(isset($_REQUEST)){
             Modificar();
         }else{
-            header('Location: ../Views/core/producto.php?error=true');
+            header('Location: ../views/core/producto.php?error=true');
         }
 
     }
@@ -25,7 +25,7 @@
         if(isset($_REQUEST)){
             GuardarS();
         }else{
-            header('Location: ../Views/core/producto.php?error=true');
+            header('Location: ../views/core/producto.php?error=true');
         }
     }
    
@@ -40,9 +40,9 @@
         $productos=$producto->Guardar($producto);
         $comparar=json_decode(json_encode($producto),true);
         if($comparar['0']['resultado']=='1'){
-            header('Location: ../Views/core/producto.php?success=true');
+            header('Location: ../views/core/producto.php?success=true');
         }else{
-            header('Location: ../Views/core/producto.php?error=true');
+            header('Location: ../views/core/producto.php?error=true');
         }
 
     }
@@ -59,9 +59,9 @@
         $productos=$producto->Modificar($producto);
         $comparar=json_decode(json_encode($producto),true);
         if($comparar['0']['resultado']=='1'){
-            header('Location: ../Views/core/producto.php?success=true');
+            header('Location: ../views/core/producto.php?success=true');
         }else{
-            header('Location: ../Views/core/producto.php?error=true');
+            header('Location: ../views/core/producto.php?error=true');
         }
 
     }
