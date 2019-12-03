@@ -1,18 +1,19 @@
 <?php
+    require_once 'models/usuario.php';
     class LoginController{
        
         public function Index(){
-            include_once "views/cliente/login.php";
+            require_once "views/cliente/login.php";
         }
 
         public function registrarse(){
             include_once "views/cliente/registrar.php";
         }
        
+        public function Registrar(){
 
-        public function loginadmin(){
-            include_once "views/admin/loginadmin.php";
         }
+     
 
     }
    

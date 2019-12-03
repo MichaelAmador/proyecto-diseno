@@ -40,7 +40,7 @@ header a {
 }
 
 .conteinerlogin {
-    width: 80%;
+    width: 95%;
     margin: auto;
     margin-top: 40;
 }
@@ -59,10 +59,22 @@ header a {
     padding: 20px;
 }
 
+@media only screen and (min-width:800px) {
+    .conteinerlogin {
+        width: 75%;
+    }
+    .conteinerlogin .formulario {
+        width: 40%;
+    }
+}
+
+.conteinerlogin .formulario h2 {
+    margin-bottom: 10px;
+}
+
 .conteinerlogin .formulario .item [type="text"] {
     width: calc();
     height: 30px;
-    margin-top: 20px;
     margin-bottom: 20px;
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px;
@@ -104,6 +116,7 @@ header a {
     font-weight: bold;
     border: 1px solid black;
     box-shadow: none;
+    cursor: pointer;
 }
 
 .botones button:hover {

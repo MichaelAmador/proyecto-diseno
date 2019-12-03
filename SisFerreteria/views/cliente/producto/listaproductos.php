@@ -1,5 +1,5 @@
 <?php
-    include_once './models/producto.php';
+    require_once './models/producto.php';
     $categoria="";
     $categoria=$_REQUEST['buscar'];
     $producto = new Producto();

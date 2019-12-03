@@ -1,5 +1,5 @@
 <?php
-	include dirname(__FILE__,2)."./Config/conexion.php";
+	require_once dirname(__FILE__,2)."./Config/conexion.php";
 
 	class usuario{
 	
@@ -47,8 +47,8 @@
 						  ->prepare("SELECT idUsuario,u.nombre,apellido, login,tp.Nombre 
                           FROM usuario u INNER JOIN tipo_usuario tp on tp.idTipoUsuario = u.tipo_usuario where u.nombre like ?");
 						  
-                $param = ["%$buscador%"];
-				$stm->execute($param);
+                
+				$stm->execute($buscador);
 				return $stm->fetchAll(PDO::FETCH_OBJ);
 			} catch (Exception $e) 
 			{

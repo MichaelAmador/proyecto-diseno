@@ -1,0 +1,92 @@
+html {
+    box-sizing: border-box;
+    background-color: #f5f5f5;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.contenedor_principal {
+    width: 80%;
+    margin: 20px auto auto auto;
+    height: 82vh;
+}
+
+.contenedor_principal h2 {
+    text-align: center;
+    color: #178cc2;
+    font-size: 25pt;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.contenedor_principal h2 i {
+    margin-left: 5px;
+}
+
+.formulario {
+    width: 80%;
+    margin: auto;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formulario input[type="text"] {
+    width: 35%;
+    padding: 3px;
+    font-size: 18pt;
+    height: auto;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+    border: 1px solid black;
+    margin: 10px;
+}
+
+.formulario input[type="File"] {
+    width: 35%;
+    height: auto;
+    font-size: 15pt;
+    margin: 10px;
+}
+
+.formulario select {
+    width: 35%;
+    font-size: 18pt;
+    height: auto;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+    border: 1px solid black;
+    margin: 10px;
+}
+
+.formulario button {
+    width: auto;
+    padding: 3px;
+    font-size: 18pt;
+    height: auto;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+    border: 1px solid black;
+    margin: 10px;
+    background: white;
+    color: #E86020;
+}
+
+.formulario button:hover {
+    background: #E86020;
+    color: white;
+    cursor: pointer;
+}
