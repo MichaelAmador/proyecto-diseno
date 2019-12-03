@@ -1,5 +1,5 @@
 <?php
-    include dirname(__file__,2).'../models/usuario.php';    
+    require_once dirname(__file__,2).'../models/usuario.php';    
 
     
     if(isset($_REQUEST['nuevaUsuario'])){

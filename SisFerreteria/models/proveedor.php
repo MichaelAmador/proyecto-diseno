@@ -1,5 +1,5 @@
 <?php
-	include dirname(__FILE__,2)."/Config/conexion.php";
+	require_once dirname(__FILE__,2)."/Config/conexion.php";
 
 	class Proveedor{
 	

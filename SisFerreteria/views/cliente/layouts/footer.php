@@ -24,7 +24,7 @@
 
                 <li><span>Terminos y Condiciones</span></li>
 
-                <li><a href="?c=login&a=Index2">SIST</a></li>
+                <li><a href="?c=_alogin&a=loginadmin">SIST</a></li>
             </ul>
         </div>
     </div>3

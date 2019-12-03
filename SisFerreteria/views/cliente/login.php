@@ -32,7 +32,10 @@
                         <button type="submit">Inicia Sesion</button>
                     </div>
                     <div class="izquierda">
-                        <a class="boton" href="">Registrarse</a>
+                        <span>
+                            !No tienes cuenta
+                        </span>
+                        <a class="boton" href="?c=login&a=registrarse">Registrate</a>
                     </div>
 
                 </div>

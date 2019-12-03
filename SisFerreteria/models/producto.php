@@ -1,5 +1,5 @@
 <?php
-	include dirname(__FILE__,2)."./Config/conexion.php";
+	require_once dirname(__FILE__,2)."./Config/conexion.php";
 
 	class Producto{
 	
@@ -23,7 +23,19 @@
                 die($e->getMessage());
             }
 	    }
-	
+        public function listarcategoria(){
+            try{
+                $result = array();
+                $stm = $this->pdo->prepare("select * from categoria;");                
+                $stm->execute();
+
+                return $stm->fetchAll(PDO::FETCH_OBJ);
+            }
+            catch(Exception $e)
+            {
+                die($e->getMessage());
+            }
+        }
 	
 		public function listar(){
             try{

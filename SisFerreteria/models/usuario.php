@@ -1,5 +1,5 @@
 <?php
-	include dirname(__FILE__,2)."./Config/conexion.php";
+	require_once dirname(__FILE__,2)."./Config/conexion.php";
 
 	class usuario{
 	
@@ -47,8 +47,8 @@
 						  ->prepare("SELECT idUsuario,u.nombre,apellido, login,tp.Nombre 
                           FROM usuario u INNER JOIN tipo_usuario tp on tp.idTipoUsuario = u.tipo_usuario where u.nombre like ?");
 						  
-                $param = ["%$buscador%"];
-				$stm->execute($param);
+                
+				$stm->execute($buscador);
 				return $stm->fetchAll(PDO::FETCH_OBJ);
 			} catch (Exception $e) 
 			{
@@ -69,11 +69,8 @@
             $stm->bindParam(2,$data->apellido,PDO::PARAM_STR);   
             $stm->bindParam(3,$data->login,PDO::PARAM_STR);   
             $stm->bindParam(4,$data->clave,PDO::PARAM_STR);   
-            $stm->bindParam(5,$data->tipo_user,PDO::PARAM_STR);           
-            $stm->execute();
-             
-            $out=$stm->fetchAll(PDO::FETCH_OBJ);
-            return $out;
+            $stm->bindParam(5,$data->tipoUser,PDO::PARAM_STR);           
+            $stm->execute();            
             } catch (Exception $e) 
             {
                 die($e->getMessage());
@@ -93,7 +90,7 @@
             $stm->bindParam(3,$data->apellido,PDO::PARAM_STR);
             $stm->bindParam(4,$data->login,PDO::PARAM_STR);
             $stm->bindParam(5,$data->clave,PDO::PARAM_STR);
-            $stm->bindParam(6,$data->tipo_usuario,PDO::PARAM_STR);
+            $stm->bindParam(6,$data->tipoUser,PDO::PARAM_STR);
            
             $stm->execute();
              

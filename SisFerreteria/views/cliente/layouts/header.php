@@ -1,3 +1,13 @@
+<?php 
+
+$valor='';
+
+if($valor==''){
+   $usuario="Usuario"; 
+}else{
+    $usuario = $valor;
+}
+?>
 <body>
     <header>
         <nav class="container-nav">
@@ -22,10 +32,14 @@
                 </li>
                 <li><a href="#">Contactenos</a></li>
                 <li><a href="#">Compras</a></li>
-                <li><a href="#"><Span>Usuario</Span><i class="fas fa-user"></i></a>
+                <li><a href="#"><Span><?php echo $usuario?></Span><i class="fas fa-user"></i></a>
                     <ul>
+                        <?php if($usuario=='Usuario'){ ?>
                         <li><a href="?c=login">Iniciar Sesión</a></li>
+                        <?php }?>
+                       <?php if($usuario!='Usuario') {?>
                         <li><a href="#">Cerrar Sesión</a></li>
+                       <?php } ?>
                     </ul>
                 </li>
             </ul>
