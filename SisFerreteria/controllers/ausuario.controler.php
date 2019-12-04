@@ -1,6 +1,21 @@
 <?php
     require_once dirname(__file__,2).'../models/usuario.php';    
+    class AusuarioController{
 
+        public function nuevousuario(){
+            require_once "views/admin/layout/ahead.php";
+            require_once "views/admin/layout/header.php";
+            require_once "views/admin/administrador/usuarios/agregarusuario.php";
+            require_once "views/admin/layout/footer.php";
+        }
+
+
+
+
+
+
+
+    }
     
     if(isset($_REQUEST['nuevaUsuario'])){
         if(isset($_REQUEST)){
