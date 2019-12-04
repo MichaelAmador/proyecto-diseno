@@ -115,14 +115,15 @@
             {
             $out='';
             $result = array();
-            $sql = "CALL modificarProducto(?, ?, ?, ? , ? , ?)";
+            $sql = "CALL modificarProducto(?, ?, ?, ? , ? , ?, ?)";
             $stm = $this->pdo->prepare($sql);
             $stm->bindParam(1,$data->idproducto,PDO::PARAM_INT);
             $stm->bindParam(2,$data->nombre,PDO::PARAM_STR);
             $stm->bindParam(3,$data->marca,PDO::PARAM_STR);
             $stm->bindParam(4,$data->precio,PDO::PARAM_STR); 
-            $stm->bindParam(5,$data->imagen,PDO::PARAM_STR); //Cambiar tipo de dato especifico para imagen
-            $stm->bindParam(6,$data->categoria,PDO::PARAM_INT);           
+            $stm->bindParam(5,$data->nombre_imagen,PDO::PARAM_STR); //Cambiar tipo de dato especifico para imagen
+            $stm->bindParam(6,$data->ruta_imagen,PDO::PARAM_STR); //Cambiar tipo de dato especifico para imagen
+            $stm->bindParam(7,$data->categoria,PDO::PARAM_INT);           
             $stm->execute();
              
             $out=$stm->fetchAll(PDO::FETCH_OBJ);

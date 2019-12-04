@@ -45,7 +45,7 @@
                 </li>
                 <li><a href="#"><Span>Usuario</Span><i class="fas fa-user"></i></a>
                     <ul>
-                        <li><a href="#">Registrar Nuevo</a></li>
+                        <li><a href="?c=ausuario&a=nuevousuario">Registrar Nuevo</a></li>
                         <li><a href="#">Listar</a></li>
                         <li><a href="#">Cerrar Sesión</a></li>
                     </ul>

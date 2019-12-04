@@ -16,7 +16,6 @@
             <input type="password" name="clave" id="" placeholder="Contraseña">
             <select name="tipo_usuario" id="">
                 <?php foreach($usuarios as $colum): ?>
-                  
                 <option value="<?php echo $colum->idTipoUsuario?>"><?php echo $colum->nombre ?></option>
                 <?php endforeach; ?>
             </select>

@@ -39,6 +39,13 @@
             }
         }
 
+        public function listartipo()
+        {
+            $stm = $this->pdo->prepare("SELECT * FROM tipo_usuario WHERE idTipoUsuario != 3;");
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        }
+
         public function login($user, $clave)
         {
             $stm = $this->pdo->prepare("SELECT * FROM usuario WHERE login=? AND clave =?");

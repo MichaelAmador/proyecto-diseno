@@ -49,7 +49,14 @@ html {
 
 .item_lista .columna1 .imagen {
     width: 100%;
-    height: 200px;
+    max-height: 200px;
+}
+
+.item_lista .columna1 .imagen img {
+    width: 10vw;
+    object-fit: cover;
+    vertical-align: top;
+    height: inherit;
 }
 
 .columna2 {
