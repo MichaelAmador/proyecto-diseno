@@ -9,10 +9,10 @@
     <form action="?c=_aproducto&a=Guardar" method="post" enctype="multipart/form-data">
         <div class="formulario">
 
-            <input type="text" name="nombre" id="" placeholder="Nombre">
-            <input type="text" name="marca" id="" placeholder="Marca">
-            <input type="text" name="precio" id="" placeholder="Precio">
-            <span>El archivo no debe ser mayor a los 2MB de tamaño</span>
+            <input type="text" name="nombre" id="">
+            <input type="text" name="marca" id="">
+            <input type="text" name="precio" id="">
+            <span>El archivo no debe superar los 2MB</span>
             <!-- Image -->
             <input type="File" name="productoimagen" id="productoimagen">
             <!-- fin image -->
