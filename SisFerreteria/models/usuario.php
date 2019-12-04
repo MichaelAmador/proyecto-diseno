@@ -39,18 +39,6 @@
             }
         }
 
-        public function listartipo(){
-            try{
-                $stm = $this->pdo->prepare("SELECT * from tipo_usuario WHERE idTipoUsuario!=3;");
-                $stm->execute();
-                return $stm->fetchAll(PDO::FETCH_OBJ);
-            }
-            catch(Exception $e){
-                die($e->getMessage());
-
-            }
-        }
-
         public function login($user, $clave)
         {
             $stm = $this->pdo->prepare("SELECT * FROM usuario WHERE login=? AND clave =?");
