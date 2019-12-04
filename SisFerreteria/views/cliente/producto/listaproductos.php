@@ -17,8 +17,8 @@
         <div class="item_lista">
             <div class="columna1">
                 <div class="imagen">
-                    <a href="">
-                        <img url="<?php echo $colum->imagen; ?>" alt="">
+                    <a href="?c=productos&a=Index2&verprod=<?php echo $colum->idproducto;?>">
+                        <img src="<?php echo $colum->ruta_imagen; ?>" alt="">
                     </a>
                 </div>
             </div>

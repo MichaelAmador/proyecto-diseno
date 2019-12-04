@@ -1,8 +1,11 @@
 <head><title>Nuevo Producto</title></head>
 <?php
     require_once './././models/categoria.php';
+    require_once './././models/marca.php';
     $categoria= new Categoria();
     $categorias=$categoria->listar();
+    $marca= new Marca();
+    $marcas=$marca->listar();
 ?>
 <div class="contenedor_principal">
     <h2>Nuevo Producto<i class="fas fa-box"></i></h2>
@@ -10,7 +13,11 @@
         <div class="formulario">
 
             <input type="text" name="nombre" id="" placeholder="Nombre">
-            <input type="text" name="marca" id="" placeholder="Marca">
+            <select name="marca" id="">
+                <?php foreach($marcas as $r): ?>
+                <option value="<?php echo $r->idmarca ?>"><?php echo $r->nombre ?></option>
+                <?php endforeach; ?>
+            </select>
             <input type="text" name="precio" id="" placeholder="Precio">
             <span>El archivo no debe ser mayor a los 2MB de tamaño</span>
             <!-- Image -->

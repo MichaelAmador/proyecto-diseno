@@ -8,7 +8,8 @@
         public $nombre;
         public $marca;
         public $precio; 
-        public $imagen;
+        public $nombre_imagen;
+        public $ruta_imagen;
         public $categoria;     
         public $buscador; 
         
@@ -40,7 +41,7 @@
 		public function listar(){
             try{
                 $result = array();              
-                $stm = $this->pdo->prepare("select idproducto, p.nombre Producto,c.nombre Categoria,m.nombre Marca,precio,imagen
+                $stm = $this->pdo->prepare("select idproducto, p.nombre Producto,c.nombre Categoria,m.nombre Marca,precio,ruta_imagen
                 from producto p inner join marca m on m.idmarca = p.marca inner join categoria c on c.idcategoria = p.categoria;");
                 $stm->execute();
 
@@ -56,7 +57,7 @@
 		public function listardetalle($idproducto){
             try{
                 $result = array();
-                $stm = $this->pdo->prepare("select idproducto, p.nombre Producto,c.nombre Categoria,m.nombre Marca,precio,imagen
+                $stm = $this->pdo->prepare("select idproducto, p.nombre Producto,c.nombre Categoria,m.nombre Marca,precio,ruta_imagen
                 from producto p inner join marca m on m.idmarca = p.marca inner join categoria c on c.idcategoria = p.categoria where idproducto=?;");
                 $stm->execute(array($idproducto));
 
@@ -84,13 +85,13 @@
 		}
         
 
-        public function Guardar(Producto $data, $ruta)
+        public function Guardar(Producto $data)
         {
             try 
             {
             $out='';
             $result = array();
-            $sql = "CALL nuevoProducto(?, ?, ? , ? , ?)";
+            $sql = "CALL nuevoProducto(?, ?, ? , ? , ?, ?)";
             $stm = $this->pdo->prepare($sql);
             $stm->bindParam(1,$data->nombre,PDO::PARAM_STR);
             $stm->bindParam(2,$data->marca,PDO::PARAM_STR);

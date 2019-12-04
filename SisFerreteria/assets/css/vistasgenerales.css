@@ -1,7 +1,6 @@
 .tabla table {
     background-color: rgba(245, 245, 245, 0.938);
-    width: 80%;
-    max-width: 80%;
+    min-width: auto;
     margin: auto;
     margin-top: 15px;
     -webkit-border-radius: 25px;
@@ -9,6 +8,9 @@
     border-radius: 25px;
     border: 1.5px solid #026A8E;
     border-collapse: collapse;
+    display: block;
+    overflow-x: auto;
+    padding: 10px;
 }
 
 table thead {
@@ -23,5 +25,23 @@ table tbody {
 
 table tbody tr td {
     border-right: 1.5px solid #026A8E;
+    border-bottom: 1.5px solid #026A8E;
+    width: 200px;
+    height: 23vh;
     padding: 3px;
+}
+
+table tbody tr td img {
+    overflow: hidden;
+    object-fit: cover;
+    height: inherit;
+    margin: auto;
+    vertical-align: center;
+}
+
+@media only screen and (min-width: 800px) {
+    .tabla table {
+        width: auto;
+        overflow: none;
+    }
 }

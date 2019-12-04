@@ -22,12 +22,12 @@
                 <?php foreach($productos as $colum =>$r):?>
                 <tr>
                     
-                    <td hidden><?php echo $r->{''}; ?></td>
+                    <td hidden><?php echo $r->{'idproducto'}; ?></td>
                     <!-- <td><?php echo var_dump($r);?></td> -->
                     <td><?php echo $r->{'Producto'};?></td>
                     <td><?php echo $r->{'Marca'};?></td>
                     <td><?php echo $r->{'precio'}; ?></td>
-                    <td><?php echo $r->{'Producto'}; ?></td>
+                    <td><img src="<?php echo $r->{'ruta_imagen'}; ?>" alt="imagen"></td>
                     <td><?php echo $r->{'Categoria'}; ?></td>
                     <td><a href="?c=_aproducto&a=editproducto&verprod=<?php echo $r->{'idproducto'};?>"">Editar</a></td>
                 </tr>

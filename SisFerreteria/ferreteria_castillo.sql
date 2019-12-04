@@ -11,7 +11,7 @@
  Target Server Version : 80016
  File Encoding         : 65001
 
- Date: 03/12/2019 14:17:16
+ Date: 03/12/2019 23:17:15
 */
 
 SET NAMES utf8mb4;
@@ -149,7 +149,8 @@ CREATE TABLE `producto`  (
   `nombre` varchar(30) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   `marca` int(30) NULL DEFAULT NULL,
   `precio` double(255, 0) NULL DEFAULT NULL,
-  `imagen` mediumblob NULL,
+  `nombre_imagen` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `ruta_imagen` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   `categoria` int(255) NULL DEFAULT NULL,
   PRIMARY KEY (`idProducto`) USING BTREE,
   INDEX `idProducto`(`idProducto`) USING BTREE,
@@ -162,8 +163,11 @@ CREATE TABLE `producto`  (
 -- ----------------------------
 -- Records of producto
 -- ----------------------------
-INSERT INTO `producto` VALUES (1, 'apagador', 1, 30, NULL, 1);
-INSERT INTO `producto` VALUES (2, 'toma corriente', 1, 40, NULL, 1);
+INSERT INTO `producto` VALUES (1, 'apagador', 1, 30, NULL, NULL, 1);
+INSERT INTO `producto` VALUES (2, 'toma corriente', 1, 40, NULL, NULL, 1);
+INSERT INTO `producto` VALUES (3, 'Plug', NULL, 25, 'plug.jpg', './assets/public/productos/plug.jpg', NULL);
+INSERT INTO `producto` VALUES (4, 'Plug', NULL, 25, 'plug.jpg', './assets/public/productos/plug.jpg', NULL);
+INSERT INTO `producto` VALUES (5, 'sepo', 1, 45, 'plug.jpg', './assets/public/productos/plug.jpg', 1);
 
 -- ----------------------------
 -- Table structure for proveedor
@@ -189,6 +193,13 @@ CREATE TABLE `tipo_usuario`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of tipo_usuario
+-- ----------------------------
+INSERT INTO `tipo_usuario` VALUES (1, 'administrador');
+INSERT INTO `tipo_usuario` VALUES (2, 'vendedor');
+INSERT INTO `tipo_usuario` VALUES (3, 'cliente');
+
+-- ----------------------------
 -- Table structure for usuario
 -- ----------------------------
 DROP TABLE IF EXISTS `usuario`;
@@ -203,6 +214,12 @@ CREATE TABLE `usuario`  (
   INDEX `fk01_usuario`(`tipo_usuario`) USING BTREE,
   CONSTRAINT `fk01_usuario` FOREIGN KEY (`tipo_usuario`) REFERENCES `tipo_usuario` (`idTipoUsuario`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of usuario
+-- ----------------------------
+INSERT INTO `usuario` VALUES (2, 'Juan', 'Cruz', 'cliente', '1234', 3);
+INSERT INTO `usuario` VALUES (3, 'juan', 'reyes', 'admin', '1234', 1);
 
 -- ----------------------------
 -- Table structure for venta
@@ -228,7 +245,7 @@ delimiter ;;
 CREATE PROCEDURE `buscador`(IN `pbuscar` varchar(255))
 BEGIN
 	#Routine body goes here...
-	select idproducto, p.nombre,m.nombre as marca, c.nombre as categoria,precio, imagen from producto p inner join marca m on m.idmarca=p.marca INNER JOIN categoria c on c.idcategoria = p.categoria where p.nombre like CONCAT('%',pbuscar,'%') OR c.nombre like CONCAT('%',pbuscar,'%') OR m.nombre like CONCAT('%',pbuscar,'%');
+	select idproducto, p.nombre,m.nombre as marca, c.nombre as categoria,precio, ruta_imagen from producto p inner join marca m on m.idmarca=p.marca INNER JOIN categoria c on c.idcategoria = p.categoria where p.nombre like CONCAT('%',pbuscar,'%') OR c.nombre like CONCAT('%',pbuscar,'%') OR m.nombre like CONCAT('%',pbuscar,'%');
 END
 ;;
 delimiter ;
@@ -396,7 +413,8 @@ delimiter ;;
 CREATE PROCEDURE `nuevoProducto`(in pNombre varchar(30),
 in pMarca int,
 in pPrecio double,
-in pImagen MEDIUMBLOB,
+in pNombrei VARCHAR(255),
+in pRuta VARCHAR(255),
 in pCategoria INT)
 BEGIN
 
@@ -409,7 +427,7 @@ if(x >0) then
 	set y = 0;
 	select y as resultado;
 else
-	insert into producto(nombre,marca,precio,imagen,categoria) values (pNombre,pMarca,pPrecio,pImagen,pCategoria);
+	insert into producto(nombre,marca,precio,producto.nombre_imagen,producto.ruta_imagen,categoria) values (pNombre,pMarca,pPrecio,pNombrei,pRuta,pCategoria);
     set y =1;
     select y as resultado;
 end if;
@@ -462,7 +480,7 @@ IN pTipoUser INT)
 BEGIN
 	#Routine body goes here...
 declare x int;
-declare y varchar(10);
+declare y int;
 
 select count(*) into x from usuario where nombre = pNombre and apellido = pApellido and login = pLogin;
 

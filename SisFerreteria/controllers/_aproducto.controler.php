@@ -28,6 +28,7 @@
         $producto = new Producto();
         $producto->nombre = $_POST['nombre'];
         $producto->precio = $_POST['precio'];
+        $producto->marca=$_POST['marca'];
 
         if(is_uploaded_file($_FILES['productoimagen']['tmp_name'])){
             $file=$_FILES['productoimagen'];
@@ -57,11 +58,12 @@
                     // echo $file['size']; // Unidad de medida en byte
                     if ($file['size']<2097152) {
                         $response=$producto->Guardar($producto);
-                        if ($response[0]==1)
+                        if ($response[0]==1){
                             echo "Registro exitoso";
-                        else
+                            header('Location:?c=_aproducto&a=Ver');
+                        }else{
                             echo "Error al cargar el registro, intente nuevamente";
-
+                        }
                     }else{
                         echo "El archivo sobrepasa el tamaño máximo permitido";
                     }

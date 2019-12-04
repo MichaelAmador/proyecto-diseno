@@ -10,9 +10,9 @@
     <div class="item_detalle">
         <div class="columna1">
             <div class="imagen">
-                <a href="">
-                    <img src="" alt="">
-                </a>
+                
+                    <img src="<?php echo $array['0']['ruta_imagen']; ?>" alt="imagen">
+                
             </div>
         </div>
         <div>
