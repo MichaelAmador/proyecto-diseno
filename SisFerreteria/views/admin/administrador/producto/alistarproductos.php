@@ -1,11 +1,12 @@
-<head><title>Listar Productos</title></head>
-<div class="contenedor_principal">
-    <h2>Lista de Productos<i class="fas fa-list"></i></h2>
-    <?php
+<?php
         require_once './././models/producto.php';
         $producto= new Producto();
         $productos=$producto->listar();
     ?>
+<head><title>Listar Productos</title></head>
+<div class="contenedor_principal">
+    <h2>Lista de Productos<i class="fas fa-list"></i></h2>
+   
 
     <div class="tabla">
         <table>

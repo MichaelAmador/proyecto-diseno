@@ -1,22 +1,51 @@
-<head><title>Nueva compra</title></head>
+<head>
+    <title>Nueva Compra</title>
+</head>
 <?php
-    require_once './././models/categoria.php';
-    $categoria= new Categoria();
-    $categorias=$categoria->listar();
+session_start();
+    require_once './././models/producto.php';
+    $producto= new Producto();
+    $productos=$producto->listar();
+    echo var_dump($_SESSION);
 ?>
+
 <div class="contenedor_principal">
-    <h2>Nueva compra<i class="fas fa-box"></i></h2>
-    <form action="?c=_acompra&a=Guardar" method="post">
-        <div class="formulario">
-
-            <input type="text" name="fecha" id="">
-            <input type="text" name="total" id="">
-            <input type="text" name="usuario" id="">
-            <input type="text" name="proveedor" id="">
-            <button type="submit">Registrar</button>
+    <h2>Lista de Productos<i class="fas fa-list"></i></h2>
 
 
-        </div>
-    </form>
+    <div class="tabla">
+        <table class="ventas">
+            <thead>
+                <th hidden>Codigo</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Agregar</th>
+            </thead>
+            <tbody>
+                <?php foreach($productos as $colum =>$r):?>
+                <tr>
+                    <td hidden><?php echo $r->{'idproducto'}; ?></td>
+                    <td><?php echo $r->{'Producto'};?></td>
+                    <td><?php echo $r->{'precio'}; ?></td>
 
+                    
+                        <form action="?c=_compras&a=Agregar" method="POST">
+                        <td>
+                          <input type="number" name="cantidad" id="" min="1" max="100">
+                          </td>
+                    <td>
+                        <input type="hidden" name="txtidproducto" value="<?php echo $r->{'idproducto'}; ?>">
+                            <input type="hidden" name="txtnombre" value="<?php echo $r->{'Producto'}; ?>">
+                            <input type="hidden" name="txtprecio" value="<?php echo $r->{'Precio'}; ?>">
+                         
+                            <button type="submit">Añadir</button>
+                        
+                    </td>
+                    </form>
+                </tr>
+                <?php endforeach;?>
+            </tbody>
+        </table>
+    </div>
 </div>

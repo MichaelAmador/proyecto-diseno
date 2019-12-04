@@ -35,9 +35,10 @@
             session_start();
             $usuarioactivo = $user->login;
             $rol = $user->tipo_usuario;
-    
+            $idusuario = $user->idUsuario;
             $_SESSION['usuario'] = $usuarioactivo;
             $_SESSION['tipo_usuario'] = $rol;
+            $_SESSION['idusuario'] = $idusuario;
     
             if ($_SESSION['tipo_usuario'] == 1) {
                 header('Location:?c=_admin');

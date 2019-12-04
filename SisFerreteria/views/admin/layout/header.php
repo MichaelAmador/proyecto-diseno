@@ -33,13 +33,13 @@
                 </li>
                 <li><a href="#">Compras</a>
                     <ul>
-                        <li><a href="">Nueva</a></li>
+                        <li><a href="?c=_compras&a=Index">Nueva</a></li>
                         <li><a href="">Listar</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Ventas</a>
                     <ul>
-                        <li><a href="">Nueva</a></li>
+                        <li><a href="?c=_ventas&a=Index">Nueva</a></li>
                         <li><a href="">Listar</a></li>
                     </ul>
                 </li>

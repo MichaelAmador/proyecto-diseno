@@ -25,7 +25,7 @@
 		*/
 		public static function startup(){
 
-			$pdo = new PDO('mysql:host=localhost;dbname=ferreteria_castillo;charset=utf8', 'root', '');
+			$pdo = new PDO('mysql:host=localhost;dbname=ferreteria_castillo;charset=utf8', 'root', 'Myroot');
 			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			return $pdo;
 

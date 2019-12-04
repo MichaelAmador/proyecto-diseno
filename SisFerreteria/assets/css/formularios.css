@@ -109,3 +109,9 @@ html {
     color: green;
     background-color: honeydew;
 }
+
+.contenedor-detalle {
+    width: 80%;
+    margin: 20px auto auto auto;
+    min-height: 20vh;
+}
