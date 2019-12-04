@@ -3,7 +3,6 @@
     require_once './././models/usuario.php';
     $usuario= new usuario();
     $usuarios=$usuario->listartipo();
-    echo var_dump($usuarios);
 ?>
 <div class="contenedor_principal">
     <h2>Nuevo usuario<i class="fas fa-user"></i></h2>

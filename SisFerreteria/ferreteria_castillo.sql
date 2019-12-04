@@ -11,7 +11,7 @@
  Target Server Version : 80016
  File Encoding         : 65001
 
- Date: 03/12/2019 23:17:15
+ Date: 04/12/2019 01:24:23
 */
 
 SET NAMES utf8mb4;
@@ -164,10 +164,10 @@ CREATE TABLE `producto`  (
 -- Records of producto
 -- ----------------------------
 INSERT INTO `producto` VALUES (1, 'apagador', 1, 30, NULL, NULL, 1);
-INSERT INTO `producto` VALUES (2, 'toma corriente', 1, 40, NULL, NULL, 1);
+INSERT INTO `producto` VALUES (2, 'toma corriente', 1, 40, 'plug.jpg', './assets/public/productos/plug.jpg', 1);
 INSERT INTO `producto` VALUES (3, 'Plug', NULL, 25, 'plug.jpg', './assets/public/productos/plug.jpg', NULL);
 INSERT INTO `producto` VALUES (4, 'Plug', NULL, 25, 'plug.jpg', './assets/public/productos/plug.jpg', NULL);
-INSERT INTO `producto` VALUES (5, 'sepo', 1, 45, 'plug.jpg', './assets/public/productos/plug.jpg', 1);
+INSERT INTO `producto` VALUES (5, 'sepo', 1, 30, 'horseman.PNG', './assets/public/productos/horseman.PNG', 1);
 
 -- ----------------------------
 -- Table structure for proveedor
@@ -181,6 +181,11 @@ CREATE TABLE `proveedor`  (
   `web` varchar(40) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   PRIMARY KEY (`idProveedor`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of proveedor
+-- ----------------------------
+INSERT INTO `proveedor` VALUES (1, 'disegsa', 'managua', '27473696', 'www.disegsa.com');
 
 -- ----------------------------
 -- Table structure for tipo_usuario
@@ -220,6 +225,8 @@ CREATE TABLE `usuario`  (
 -- ----------------------------
 INSERT INTO `usuario` VALUES (2, 'Juan', 'Cruz', 'cliente', '1234', 3);
 INSERT INTO `usuario` VALUES (3, 'juan', 'reyes', 'admin', '1234', 1);
+INSERT INTO `usuario` VALUES (4, 'paco', 'sanz', 'vendedor1', '12345', 2);
+INSERT INTO `usuario` VALUES (5, 'pedro', 'molina', 'vendedor2', '12345', 2);
 
 -- ----------------------------
 -- Table structure for venta
@@ -284,20 +291,22 @@ CREATE PROCEDURE `modificarProducto`(IN `pIdProducto` int,
 IN `pNombre` varchar(50),
 IN `pMarca` int,
 IN `pPrecio` double,
-in pImagen MEDIUMBLOB,
+in pNombrei VARCHAR(255),
+in pRuta VARCHAR(255),
 in pCategoria INT)
 BEGIN
 	#Routine body goes here...
 	
 declare x int;
-declare y varchar(10);
+declare y int;
 
 
 UPDATE producto SET
 nombre = pNombre,
 marca = pMarca,
 precio = pPrecio,
-imagen = pImagen,
+nombre_imagen = pNombrei,
+ruta_imagen = pRuta,
 categoria = pCategoria
 WHERE
 idProducto = pIdProducto;
