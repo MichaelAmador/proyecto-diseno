@@ -10,13 +10,13 @@
             include_once "views/admin/loginadmin.php";
         }
 
-        public function login(){
+        public function Login(){
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 $data = [
     
-                    'usuario' => trim($_POST['usuario']),
-                    'clave' => trim($_POST['clave']),
+                    'usuario' => trim($_POST['user']),
+                    'clave' => trim($_POST['pass']),
                 ];
     
                 $loggedInUser = $this->model->login($data['usuario'], $data['clave']);
@@ -24,8 +24,8 @@
                 if ($loggedInUser) {
                     $this->createUserSession($loggedInUser);
                 } else {
-                    $popup = 'Usuario Incorrecto';
-                    $this->CargarPagina($popup);
+        
+                    $this->CargarPagina();
                 }
             }
         }
@@ -39,16 +39,16 @@
             $_SESSION['usuario'] = $usuarioactivo;
             $_SESSION['tipo_usuario'] = $rol;
     
-            if ($_SESSION['tipo_usuario'] == 2) {
-                header('Location:?c=_homeadmin');
-            }  else{
-                header('Location:?c=login');
+            if ($_SESSION['tipo_usuario'] == 1) {
+                header('Location:?c=_admin');
+            }  elseif($_SESSION['tipo_usuario'] == 2){
+                header('Location:?c=_admin');
             }
             echo var_dump($user);
         }
         public function CargarPagina()
         {
-            require_once('View/login/login.php');
+            require_once('views/admin/loginadmin.php');
         }
 
 

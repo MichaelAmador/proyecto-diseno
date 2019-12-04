@@ -6,7 +6,7 @@
 <header>
         <nav class="container-nav">
             <div class="Logo">
-                <a href="?c=Index"><span>Ferreteria Castillo</span></a>
+                <a href="?c=_admin"><span>Ferreteria Castillo</span></a>
             </div>
             <div class="mostrarmenu" onclick="MostrarMenu()">
                 <span>

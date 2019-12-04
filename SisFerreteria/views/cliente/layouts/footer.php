@@ -27,7 +27,7 @@
                 <li><a href="?c=_alogin&a=loginadmin">SIST</a></li>
             </ul>
         </div>
-    </div>3
+    </div>
     <div class="copyright">
         <p><span>&copy; 2019</span>, Todos Los Derechos Reservados</p>
     </div>

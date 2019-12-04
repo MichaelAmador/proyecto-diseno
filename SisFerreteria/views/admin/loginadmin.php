@@ -1,3 +1,14 @@
+<?php
+    session_start();
+
+    if(isset($_SESSION['usuario'])){
+        session_unset();
+        session_destroy();
+        header('Location:?c=_alogin&a=loginadmin');
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -12,19 +23,19 @@
 
 <body>
     <header>
-        <a href="">Ferreteria Castillo</a>
+        <a href="#">Ferreteria Castillo</a>
     </header>
     <div class="conteinerlogin">
 
-        <form action="?c=_alogin&a=login" method="post">
+        <form action="?c=_alogin&a=Login" method="post">
             <div class="formulario">
                 <h2>Inicio de Sesión</h2>
                 <div class="item usuario">
-                    <input type="text" name="" id="" placeholder="Usuario">
+                    <input type="text" name="user" id="" placeholder="Usuario">
                 </div>
 
                 <div class="item usuario">
-                    <input type="password" name="" id="" placeholder="Contraseña">
+                    <input type="password" name="pass" id="" placeholder="Contraseña">
                 </div>
 
                 <div class="botones">
