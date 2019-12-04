@@ -9,9 +9,9 @@
     <form action="?c=_aproducto&a=Guardar" method="post">
         <div class="formulario">
 
-            <input type="text" name="nombre" id="">
-            <input type="text" name="marca" id="">
-            <input type="text" name="precio" id="">
+            <input type="text" name="nombre" id="" placeholder="Nombre">
+            <input type="text" name="marca" id="" placeholder="Marca">
+            <input type="text" name="precio" id="" placeholder="Precio">
             
             <!-- Image -->
 

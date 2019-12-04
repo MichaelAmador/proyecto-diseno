@@ -16,8 +16,7 @@ html {
 .contenedor_principal {
     width: 80%;
     margin: 20px auto auto auto;
-    min-height:82vh;
-
+    min-height: 82vh;
 }
 
 .contenedor_principal h2 {
@@ -44,7 +43,7 @@ html {
 
 .formulario input[type="text"] {
     width: 35%;
-    padding: 3px;
+    padding: 5px 13px;
     font-size: 18pt;
     height: auto;
     -webkit-border-radius: 25px;
@@ -70,6 +69,7 @@ html {
     border-radius: 25px;
     border: 1px solid black;
     margin: 10px;
+    padding: 5px 13px;
 }
 
 .formulario button {
