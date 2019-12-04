@@ -27,8 +27,8 @@
                 </li>
                 <li><a href="#">Proveedor</a>
                     <ul>
-                        <li><a href="">Nuevo</a></li>
-                        <li><a href="">Listar</a></li>
+                        <li><a href="?c=_aproveedor">Nuevo</a></li>
+                        <li><a href="?c=_aproveedor&a=Ver">Listar</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Compras</a>

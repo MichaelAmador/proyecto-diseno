@@ -96,6 +96,22 @@
 			{
 				die($e->getMessage());
 			}
+        }
+        
+        public function DetalleProveedor($buscador)
+		{
+			try 
+			{
+				$stm = $this->pdo
+					->prepare("select * from proveedor where idProveedor=?");
+						  
+                $param = ["%$buscador%"];
+				$stm->execute($param);
+				return $stm->fetchAll(PDO::FETCH_OBJ);
+			} catch (Exception $e) 
+			{
+				die($e->getMessage());
+			}
 		}
 	
 	}
