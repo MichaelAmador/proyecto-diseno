@@ -95,8 +95,9 @@
             $stm->bindParam(1,$data->nombre,PDO::PARAM_STR);
             $stm->bindParam(2,$data->marca,PDO::PARAM_STR);
             $stm->bindParam(3,$data->precio,PDO::PARAM_STR); 
-            $stm->bindParam(4,$ruta,PDO::PARAM_STR); //Cambiar tipo de dato especifico para imagen
-            $stm->bindParam(5,$data->categoria,PDO::PARAM_INT);           
+            $stm->bindParam(4,$data->nombre_imagen,PDO::PARAM_STR); //Cambiar tipo de dato especifico para imagen
+            $stm->bindParam(5,$data->ruta_imagen,PDO::PARAM_STR); //Cambiar tipo de dato especifico para imagen
+            $stm->bindParam(6,$data->categoria,PDO::PARAM_INT);           
             $stm->execute();
              
             $out=$stm->fetchAll(PDO::FETCH_OBJ);

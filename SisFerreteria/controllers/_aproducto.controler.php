@@ -29,38 +29,49 @@
         $producto->nombre = $_POST['nombre'];
         $producto->precio = $_POST['precio'];
 
-        $file=$_FILES['productoimagen'];
-        $nombre_file=$file['name'];
-        $nombre_ruta_provisional=$file['tmp_name'];
-        $type=$file["type"];
+        if(is_uploaded_file($_FILES['productoimagen']['tmp_name'])){
+            $file=$_FILES['productoimagen'];
+           
+            $ruta="./assets/public/productos/";
 
-        $ruta_producto= "./assets/public/productos/".$nombre_file;
-        
-        if($type=="image/png" || $type=="image/jpg" || $type=="image/jpeg" || $type=="video/mp4"){
+            $nombre_final= trim ($file['name']);
+            // $nombre_final= preg_replace (" ","",$nombre_final);
             
-            $rstm=move_uploaded_file($nombre_ruta_provisional,$ruta_producto);
-                if($rstm=1){
-                $response=$producto->Guardar($producto,$ruta_producto);
-                $response =$response[0];
-                    if($response[0]=="1"){
-                        echo("Insertado");
+            $upload =$ruta.$nombre_final;
+            
+            $type=$file['type']; // Tipo de extensión de la imagen
+
+            $producto->ruta_imagen=$ruta.$nombre_final; //ruta con el nombre de la imagen
+            
+            
+            $producto->nombre_imagen=$nombre_final;//Nombre del archivo con la extensión
+
+            // echo "<br/>".$ruta."<br>";
+            
+             if($type=="image/png" || $type=="image/jpg" || $type=="image/jpeg"){
+            
+                if (move_uploaded_file($file['tmp_name'],$upload)) {
+                    // echo "<b> Registro exitoso!. Datos:</b> <br/>";
+                    // echo $file['name']."<br/>";
+                    // echo $file['type'].": Nombre<br/>";
+                    // echo $file['size']; // Unidad de medida en byte
+                    if ($file['size']<2097152) {
+                        $response=$producto->Guardar($producto);
+                        if ($response[0]==1)
+                            echo "Registro exitoso";
+                        else
+                            echo "Error al cargar el registro, intente nuevamente";
+
                     }else{
-                        echo ("No Insertado");
+                        echo "El archivo sobrepasa el tamaño máximo permitido";
                     }
-                // }elseif($response[0]==""){
-                // 	echo("Inserte archivo con extensión .png, .jpg, jpeg");
-                    
-                // 	}
                 }
-        }else{
-            
-            echo("Inserte imagen con extensión .png, .jpg, jpeg (".$type);
+            }else{
+                echo "Tipo de archivo no valido, tiene que ser de tipo png, jpg, jpeg";
+            }
+
         }
-        
 
-
-
-        // $productos = $producto->Guardar($producto);
     }
 
     public function Editar(){
