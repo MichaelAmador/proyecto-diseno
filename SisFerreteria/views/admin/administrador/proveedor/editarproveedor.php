@@ -1,12 +1,22 @@
 <?php
-        require_once './models/proveedor.php';
-               
+        require_once './././models/proveedor.php';        
         $idpro="";
-        $idpro=$_REQUEST['verprov'];
-        $proveedor = new Proveedor();
-        $proveedors = $proveedor->DetalleProveedor($idpro);        
+        $array="";
+        $nombre="";
+        $direccion="";
+        $telefono="";
+        $web="";
+        if(isset($_REQUEST)){
+            $idpro=$_REQUEST['verprov'];
+            $proveedor = new Proveedor();
+            $proveedors = $proveedor->DetalleProveedor($idpro);
+            $array=json_decode(json_encode($proveedors),true);
+            $nombre = $array['0']['nombre'];
+            $direccion = $array['0']['direccion'];
+            $telefono = $array['0']['telefono'];
+            $web = $array['0']['web'] ;
+        }      
         $array=json_decode(json_encode($proveedors),true);
-        echo var_dump($array);
         
 ?>
   </head>
@@ -18,12 +28,12 @@
     <form action="?c=_aproveedor&a=Editar" method="post">
         <div class="formulario">
 
-            <input type="text" name="nombre" id="" value="<?php echo $array['0']['nombre'] ?>">
-            <input type="text" name="direccion" id="" value="<?php echo $array['0']['direccion'] ?>">
-            <input type="text" name="telefono" id="" value="<?php echo $array['0']['telefono'] ?>">            
-            
+            <input type="text" name="nombre" id="" placeholder="Nombre de Proveedor" value="<?php echo $nombre;?>">
+            <input type="text" name="direccion" id="" placeholder="Direccion"value="<?php echo $direccion;?>">
+            <input type="text" name="telefono" id="" placeholder="Telefono"value="<?php echo $telefono; ?>">            
+            <input type="text" name="web" placeholder="Web del proveedor"  id="" value="<?php echo $web; ?>">
             <button type="submit">Registrar</button>
-            <input type="hidden" name="idproveedor" value="<?php echo $array['0']['idProveedor'] ?>">
+            <input type="hidden" name="idproveedor" value="<?php echo $idpro ?>">
 
         </div>
     </form>

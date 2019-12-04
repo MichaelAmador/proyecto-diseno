@@ -28,7 +28,7 @@
                     <td><?php echo $r->{'direccion'};?></td>
                     <td><?php echo $r->{'telefono'}; ?></td>
                     <td><?php echo $r->{'web'}; ?></td>                    
-                    <td><a href="?c=_aproveedor&a=editproveedor&verprov=<?php echo $r->{'idProveedor'};?>"">Editar</a></td>
+                    <td><a href="?c=_aproveedor&a=editproveedor&verprov=<?php echo $r->{'idProveedor'};?>">Editar</a></td>
                 </tr>
                 <?php endforeach;?>
             </tbody>

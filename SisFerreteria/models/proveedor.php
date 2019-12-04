@@ -98,15 +98,14 @@
 			}
         }
         
-        public function DetalleProveedor($buscador)
+        public function DetalleProveedor($idproveedor)
 		{
 			try 
 			{
+                $result = array();
 				$stm = $this->pdo
 					->prepare("select * from proveedor where idProveedor=?");
-						  
-                $param = ["%$buscador%"];
-				$stm->execute($param);
+				$stm->execute(array($idproveedor));
 				return $stm->fetchAll(PDO::FETCH_OBJ);
 			} catch (Exception $e) 
 			{

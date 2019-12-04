@@ -14,8 +14,6 @@ require_once './././models/inventario.php';
             <tbody>
             <?php foreach($inventarios as $colum =>$r):?>
                 <tr>
-                    
-                   
                     <td><?php echo $r->{'idInventario'};?></td>
                     <td><?php echo $r->{'nombre'};?></td>
                     <td><?php echo $r->{'cantidad'}; ?></td>

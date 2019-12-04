@@ -9,7 +9,7 @@
         $idpro="";
         $nombre="";
         $precio="";
-        if(isset($_REQUEST)){
+        if(isset($_REQUEST['verprod'])){
         $idpro=$_REQUEST['verprod'];
         $producto = new Producto();
         $productos = $producto->listardetalle($idpro);

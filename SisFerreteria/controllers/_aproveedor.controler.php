@@ -31,6 +31,7 @@
         $proveedor->telefono = $_POST['telefono'];
         $proveedor->web = $_POST['web'];
         $proveedors = $proveedor->Guardar($proveedor);
+        header('Location:?c=_aproveedor&a=Index');
     }
 
     public function Editar(){
@@ -42,7 +43,7 @@
         $proveedor->web = $_POST['web'];
         $proveedors = $proveedor->Modificar($proveedor);
         
-        //header('Location:?c=_aproveedor&a=Ver');
+        header('Location:?c=_aproveedor&a=Ver');
     }
 
 

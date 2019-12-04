@@ -116,7 +116,7 @@
                         $response=$producto->Modificar($producto);
                         if ($response[0]==1){
                             echo "Registro exitoso";
-                            header('Location:?c=_aproducto&a=editproducto');
+                            header('Location:?c=_aproducto&a=Ver');
                         }else{
                             echo "Error al cargar el registro, intente nuevamente";
                         }
