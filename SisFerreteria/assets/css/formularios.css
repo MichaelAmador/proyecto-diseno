@@ -16,7 +16,8 @@ html {
 .contenedor_principal {
     width: 80%;
     margin: 20px auto auto auto;
-    height: 82vh;
+    min-height:82vh;
+
 }
 
 .contenedor_principal h2 {

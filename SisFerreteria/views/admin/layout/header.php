@@ -43,7 +43,7 @@
                         <li><a href="">Listar</a></li>
                     </ul>
                 </li>
-                <li><a href="#"><Span>Ususario</Span><i class="fas fa-user"></i></a>
+                <li><a href="#"><Span>Usuario</Span><i class="fas fa-user"></i></a>
                     <ul>
                         <li><a href="#">Registrar Nuevo</a></li>
                         <li><a href="#">Listar</a></li>

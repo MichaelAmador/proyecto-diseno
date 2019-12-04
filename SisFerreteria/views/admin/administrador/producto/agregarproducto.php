@@ -12,7 +12,11 @@
             <input type="text" name="nombre" id="">
             <input type="text" name="marca" id="">
             <input type="text" name="precio" id="">
-            <input type="File" name="imagen" id="">
+            
+            <!-- Image -->
+
+            <input type="File" name="productoimagen" id="productoimagen">
+            <!-- fin image -->
             <select name="categoria" id="">
                 <?php foreach($categorias as $colum): ?>
                 <option value="<?php echo $colum->idcategoria ?>"><?php echo $colum->nombre ?></option>
