@@ -16,7 +16,7 @@
             <ul class="menu-items" id="MenuItem">
                 <li><a href="#">Inventario</a>
                     <ul>
-                        <li><a href="">Listar</a></li>
+                        <li><a href="?c=_inventario&a=listarinventario">Listar</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Productos</a>

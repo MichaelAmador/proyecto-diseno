@@ -1,12 +1,9 @@
 <?php
 	require_once dirname(__FILE__,2)."./Config/conexion.php";
 
-	class Marca{
+	class Inventario{
 	
 		private $pdo;
-        public $idmarca;
-        public $nombre; 
-        public $buscador;      
         
 		public function __CONSTRUCT()
 	    {
