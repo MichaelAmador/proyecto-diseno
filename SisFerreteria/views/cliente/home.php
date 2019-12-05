@@ -10,7 +10,7 @@
             <img src="./assets/img/trupperscrews.jpg" alt="">
         </div>
         <div class="miSlider fade">
-            <img src="./assets/img/cementocanal.jpg" alt="">
+            <img src="./assets/img/cuchilla.png" alt="">
         </div>
         <div class="barras">
             <span class="barra active" onclick="posicionSlide(1)"></span>
