@@ -11,7 +11,7 @@
  Target Server Version : 80016
  File Encoding         : 65001
 
- Date: 04/12/2019 01:24:23
+ Date: 04/12/2019 19:58:37
 */
 
 SET NAMES utf8mb4;
@@ -50,9 +50,16 @@ CREATE TABLE `compra`  (
   PRIMARY KEY (`idcompra`) USING BTREE,
   INDEX `fk01_compra`(`idproveedor`) USING BTREE,
   INDEX `fk02_compra`(`idusuario`) USING BTREE,
-  CONSTRAINT `fk02_compra` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`idUsuario`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `fk01_compra` FOREIGN KEY (`idproveedor`) REFERENCES `proveedor` (`idProveedor`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+  CONSTRAINT `fk01_compra` FOREIGN KEY (`idproveedor`) REFERENCES `proveedor` (`idProveedor`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk02_compra` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`idUsuario`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of compra
+-- ----------------------------
+INSERT INTO `compra` VALUES (8, '2019-12-20', 320, 20, 300, 1, 3);
+INSERT INTO `compra` VALUES (9, '2019-12-20', 320, 20, 300, 1, 3);
+INSERT INTO `compra` VALUES (10, '2019-12-05', 310, 10, 300, 1, 3);
 
 -- ----------------------------
 -- Table structure for detalle_compra
@@ -67,9 +74,19 @@ CREATE TABLE `detalle_compra`  (
   PRIMARY KEY (`iddetallecompra`) USING BTREE,
   INDEX `fk01_detallecompra`(`idcompra`) USING BTREE,
   INDEX `fk02_detallecompra`(`idproducto`) USING BTREE,
-  CONSTRAINT `fk02_detallecompra` FOREIGN KEY (`idproducto`) REFERENCES `producto` (`idProducto`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `fk01_detallecompra` FOREIGN KEY (`idcompra`) REFERENCES `compra` (`idcompra`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+  CONSTRAINT `fk01_detallecompra` FOREIGN KEY (`idcompra`) REFERENCES `compra` (`idcompra`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk02_detallecompra` FOREIGN KEY (`idproducto`) REFERENCES `producto` (`idProducto`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of detalle_compra
+-- ----------------------------
+INSERT INTO `detalle_compra` VALUES (1, 8, 1, 30, 4);
+INSERT INTO `detalle_compra` VALUES (2, 8, 2, 40, 5);
+INSERT INTO `detalle_compra` VALUES (3, 9, 1, 30, 4);
+INSERT INTO `detalle_compra` VALUES (4, 9, 2, 40, 5);
+INSERT INTO `detalle_compra` VALUES (5, 10, 1, 30, 5);
+INSERT INTO `detalle_compra` VALUES (6, 10, 2, 40, 4);
 
 -- ----------------------------
 -- Table structure for detalle_venta
@@ -84,9 +101,9 @@ CREATE TABLE `detalle_venta`  (
   PRIMARY KEY (`idDetalleventa`) USING BTREE,
   INDEX `fk01_detalleventa`(`idventa`) USING BTREE,
   INDEX `fk02_detalleventa`(`idproducto`) USING BTREE,
-  CONSTRAINT `fk02_detalleventa` FOREIGN KEY (`idproducto`) REFERENCES `producto` (`idProducto`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `fk01_detalleventa` FOREIGN KEY (`idventa`) REFERENCES `venta` (`idVenta`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+  CONSTRAINT `fk01_detalleventa` FOREIGN KEY (`idventa`) REFERENCES `venta` (`idVenta`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk02_detalleventa` FOREIGN KEY (`idproducto`) REFERENCES `producto` (`idProducto`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for inventario
@@ -99,7 +116,13 @@ CREATE TABLE `inventario`  (
   PRIMARY KEY (`idInventario`) USING BTREE,
   INDEX `fk01_inventario`(`idProducto`) USING BTREE,
   CONSTRAINT `fk_01producto` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`idProducto`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of inventario
+-- ----------------------------
+INSERT INTO `inventario` VALUES (1, 1, 9);
+INSERT INTO `inventario` VALUES (2, 2, 9);
 
 -- ----------------------------
 -- Table structure for marca
@@ -109,7 +132,7 @@ CREATE TABLE `marca`  (
   `idmarca` int(255) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(30) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   INDEX `idmarca`(`idmarca`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of marca
@@ -125,7 +148,7 @@ CREATE TABLE `medidas`  (
   `nombre` varchar(20) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   `abreviacion` varchar(5) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   INDEX `idmedida`(`idmedida`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for medidas_productos
@@ -136,8 +159,8 @@ CREATE TABLE `medidas_productos`  (
   `idproducto` int(255) NULL DEFAULT NULL,
   INDEX `fk01_medidaproducto`(`idmedida`) USING BTREE,
   INDEX `fk02_medidaproducto`(`idproducto`) USING BTREE,
-  CONSTRAINT `fk02_medidaproducto` FOREIGN KEY (`idproducto`) REFERENCES `producto` (`idProducto`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `fk01_medidaproducto` FOREIGN KEY (`idmedida`) REFERENCES `medidas` (`idmedida`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `fk01_medidaproducto` FOREIGN KEY (`idmedida`) REFERENCES `medidas` (`idmedida`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk02_medidaproducto` FOREIGN KEY (`idproducto`) REFERENCES `producto` (`idProducto`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -156,9 +179,9 @@ CREATE TABLE `producto`  (
   INDEX `idProducto`(`idProducto`) USING BTREE,
   INDEX `fk01_producto`(`marca`) USING BTREE,
   INDEX `fk02_producto`(`categoria`) USING BTREE,
-  CONSTRAINT `fk02_producto` FOREIGN KEY (`categoria`) REFERENCES `categoria` (`idcategoria`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `fk01_producto` FOREIGN KEY (`marca`) REFERENCES `marca` (`idmarca`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+  CONSTRAINT `fk01_producto` FOREIGN KEY (`marca`) REFERENCES `marca` (`idmarca`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk02_producto` FOREIGN KEY (`categoria`) REFERENCES `categoria` (`idcategoria`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of producto
@@ -180,7 +203,7 @@ CREATE TABLE `proveedor`  (
   `telefono` varchar(16) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   `web` varchar(40) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   PRIMARY KEY (`idProveedor`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of proveedor
@@ -218,7 +241,7 @@ CREATE TABLE `usuario`  (
   PRIMARY KEY (`idUsuario`) USING BTREE,
   INDEX `fk01_usuario`(`tipo_usuario`) USING BTREE,
   CONSTRAINT `fk01_usuario` FOREIGN KEY (`tipo_usuario`) REFERENCES `tipo_usuario` (`idTipoUsuario`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of usuario
@@ -242,7 +265,27 @@ CREATE TABLE `venta`  (
   INDEX `fk01_venta`(`idusuario`) USING BTREE,
   INDEX `idVenta`(`idVenta`) USING BTREE,
   CONSTRAINT `fk01_ventas` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`idUsuario`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Procedure structure for addcompra
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `addcompra`;
+delimiter ;;
+CREATE PROCEDURE `addcompra`(IN `pfecha` date,IN `psubtotal` double,IN `pdescuento` double,IN `ptotal` double,IN `pidprov` int,IN `piduser` int)
+BEGIN
+	#Routine body goes here...
+	INSERT INTO compra(fecha,subtotal,descuento,total,idproveedor,idusuario) VALUES (pfecha,psubtotal,pdescuento,ptotal,pidprov,piduser);
+	
+	SELECT LAST_INSERT_ID() as idcom;
+	
+	
+	
+	
+
+END
+;;
+delimiter ;
 
 -- ----------------------------
 -- Procedure structure for buscador
@@ -253,6 +296,44 @@ CREATE PROCEDURE `buscador`(IN `pbuscar` varchar(255))
 BEGIN
 	#Routine body goes here...
 	select idproducto, p.nombre,m.nombre as marca, c.nombre as categoria,precio, ruta_imagen from producto p inner join marca m on m.idmarca=p.marca INNER JOIN categoria c on c.idcategoria = p.categoria where p.nombre like CONCAT('%',pbuscar,'%') OR c.nombre like CONCAT('%',pbuscar,'%') OR m.nombre like CONCAT('%',pbuscar,'%');
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for detallecompra
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `detallecompra`;
+delimiter ;;
+CREATE PROCEDURE `detallecompra`(IN `pidcom` int,IN `idprod` int,IN `pprecio` double,IN `pcantidad` double)
+BEGIN
+	#Routine body goes here...
+	DECLARE x INT;
+	DECLARE ca DOUBLE;
+	DECLARE ncan DOUBLE;
+	DECLARE cin DOUBLE;
+	
+	INSERT into detalle_compra(idcompra,idProducto,precio,cantidad) VALUES(pidcom, idprod, pprecio, pcantidad);
+	 
+	SELECT COUNT(*) into x FROM inventario WHERE inventario.idProducto = idprod;
+	
+	IF(x>0) THEN
+	
+		SELECT inventario.cantidad into ca FROM inventario WHERE inventario.idProducto = idprod;
+		SET cin = ca + pcantidad;
+		
+		UPDATE inventario set inventario.cantidad = cin WHERE inventario.idProducto = idprod;
+	
+	ELSE
+	
+		INSERT into inventario(inventario.idProducto,inventario.cantidad) VALUE(idprod,pcantidad);
+	
+	END IF;
+	
+	
+	
+	
+
 END
 ;;
 delimiter ;

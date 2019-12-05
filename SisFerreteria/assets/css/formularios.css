@@ -16,7 +16,23 @@ html {
 .contenedor_principal {
     width: 80%;
     margin: 20px auto auto auto;
-    min-height: 82vh;
+    min-height: 80vh;
+    max-height: auto;
+}
+
+.contenedor_principal1 {
+    width: 80%;
+    margin: 20px auto auto auto;
+    min-height: 40vh;
+    max-height: auto;
+}
+
+.contenedor_principal1 h2 {
+    text-align: center;
+    color: #178cc2;
+    font-size: 25pt;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
 .contenedor_principal h2 {
@@ -31,8 +47,12 @@ html {
     margin-left: 5px;
 }
 
+.contenedor_principal1 h2 i {
+    margin-left: 5px;
+}
+
 .formulario {
-    width: 80%;
+    width: 90%;
     margin: auto;
     height: auto;
     display: flex;
@@ -110,8 +130,57 @@ html {
     background-color: honeydew;
 }
 
+.contenedor-detalle .formulario {
+    border: 1px solid gray;
+    box-shadow: 1px 1px 5px gray;
+}
+
+.contenedor-detalle .formulario h2 {
+    color: #178cc2;
+    font-size: 2rem;
+}
+
+.contenedor-detalle .formulario form {
+    width: 100%;
+}
+
 .contenedor-detalle {
-    width: 80%;
+    width: 98%;
     margin: 20px auto auto auto;
     min-height: 20vh;
+}
+
+.contenedor-detalle .entradas {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.contenedor-detalle .formulario h2 {
+    margin: 10px 0 10px 0;
+}
+
+.entradas select {
+    width: 35%;
+    padding: 5px;
+    font-size: 18pt;
+}
+
+.entradas input[type="date"] {
+    width: 35%;
+    font-size: 15pt;
+    height: auto;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+    border: 1px solid black;
+    margin: 10px;
+    padding: 5px;
+}
+
+.entradas button {
+    width: 30%;
+    margin: auto;
 }

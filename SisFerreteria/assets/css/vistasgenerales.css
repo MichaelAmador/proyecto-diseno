@@ -1,3 +1,10 @@
+@media only screen and (max-width:799px) {
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
 .tabla table {
     background-color: rgba(245, 245, 245, 0.938);
     min-width: 50%;
@@ -70,6 +77,20 @@ table tbody tr td img {
     background: #E86020;
     color: white;
     cursor: pointer;
+}
+
+.tabladetalle table {
+    width: 90%;
+    margin: auto;
+}
+
+.tabladetalle table thead th {
+    height: auto;
+}
+
+.tabladetalle table tbody tr td {
+    height: auto;
+    padding: 3px;
 }
 
 @media only screen and (min-width: 800px) {

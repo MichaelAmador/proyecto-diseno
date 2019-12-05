@@ -6,10 +6,9 @@ session_start();
     require_once './././models/producto.php';
     $producto= new Producto();
     $productos=$producto->listar();
-    echo var_dump($_SESSION);
 ?>
 
-<div class="contenedor_principal">
+<div class="contenedor_principal1">
     <h2>Lista de Productos<i class="fas fa-list"></i></h2>
 
 
@@ -29,19 +28,19 @@ session_start();
                     <td><?php echo $r->{'Producto'};?></td>
                     <td><?php echo $r->{'precio'}; ?></td>
 
-                    
-                        <form action="?c=_compras&a=Agregar" method="POST">
+
+                    <form action="?c=_compras&a=Agregar" method="POST">
                         <td>
-                          <input type="number" name="cantidad" id="" min="1" max="100">
-                          </td>
-                    <td>
-                        <input type="hidden" name="txtidproducto" value="<?php echo $r->{'idproducto'}; ?>">
+                            <input type="number" name="cantidad" id="" min="1" max="100">
+                        </td>
+                        <td>
+                            <input type="hidden" name="txtidproducto" value="<?php echo $r->{'idproducto'}; ?>">
                             <input type="hidden" name="txtnombre" value="<?php echo $r->{'Producto'}; ?>">
-                            <input type="hidden" name="txtprecio" value="<?php echo $r->{'Precio'}; ?>">
-                         
+                            <input type="hidden" name="txtprecio" value="<?php echo $r->{'precio'}; ?>">
+
                             <button type="submit">Añadir</button>
-                        
-                    </td>
+
+                        </td>
                     </form>
                 </tr>
                 <?php endforeach;?>
